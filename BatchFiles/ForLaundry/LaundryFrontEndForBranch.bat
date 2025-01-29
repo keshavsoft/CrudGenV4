@@ -24,6 +24,6 @@ call npm run FromFactory-CompletionQrCodes
 call npm run Dashboard-QrCodeAtStage-BranchFilter
 call npm run Delivery
 
-xcopy .\publicDir ..\CrudGenV3\public\Laundry\Branch /h /i /c /k /e /r /y
+xcopy .\publicDir ..\CrudGenV4\public\Laundry\Branch /h /i /c /k /e /r /y
 
-cd ..\CrudGenV3
+cd ..\CrudGenV4

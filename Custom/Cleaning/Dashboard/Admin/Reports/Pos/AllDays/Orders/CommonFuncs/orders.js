@@ -1,5 +1,5 @@
-import { StartFunc as KKD } from "../../../../../../../../../binV4/KKD/CommonPull/kLowDb/PullData/returnAsArray.js";
-import { StartFunc as ANR } from "../../../../../../../../../binV4/ANFO/CommonPull/kLowDb/PullData/returnAsArray.js";
+import { StartFunc as KKD } from "../../../../../../../../../binV4/BranOrdersKKD/CommonPull/kLowDb/PullData/returnAsArray.js";
+// import { StartFunc as ANR } from "../../../../../../../../../binV4/ANFO/CommonPull/kLowDb/PullData/returnAsArray.js";
 // import { StartFunc as CSO } from "../../../../../../../../../binV4/CSO/CommonPull/kLowDb/PullData/returnAsArray.js";
 // import { StartFunc as GD } from "../../../../../../../../../binV4/GD/CommonPull/kLowDb/PullData/returnAsArray.js";
 // import { StartFunc as GWK } from "../../../../../../../../../binV4/GWK/CommonPull/kLowDb/PullData/returnAsArray.js";
@@ -19,7 +19,7 @@ import { StartFunc as ANR } from "../../../../../../../../../binV4/ANFO/CommonPu
 
 let StartFunc = () => {
     let LocalkkdData = KKD();
-    let LocalanrData = ANR();
+    // let LocalanrData = ANR();
     // let LocalcsoData = CSO();
     // let LocalgdData = GD();
     // let LocalgwkData = GWK();

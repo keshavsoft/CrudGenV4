@@ -15,6 +15,6 @@ npm run Admin-Masters
 npm run Accounts
 npm run Dcs
 
-cp -r  ./publicDir/* ../CrudGenV3/public/Laundry/Admin
+cp -r  ./publicDir/* ../CrudGenV4/public/Laundry/Admin
 
-cd ../CrudGenV3
+cd ../CrudGenV4

@@ -1,4 +1,4 @@
-# CrudGenV3
+# CrudGenV4
 Create Front end, back end and database from given schema
 <h1 align="center" color="#0000FF">crudBD</h1>
 
@@ -35,13 +35,13 @@ This project focuses on automating crudBD operations for JSON files, making it e
 3. Clone the repository
    ```
    
-   git clone https://github.com/keshavsoft/CrudGenV3
+   git clone https://github.com/keshavsoft/CrudGenV4
    
    ```
-4. Change Directory to CrudGenV3 or Open the cloned folder, navigate to CrudGenV3, and open the command prompt.
+4. Change Directory to CrudGenV4 or Open the cloned folder, navigate to CrudGenV4, and open the command prompt.
    ```
    
-    cd CrudGenV3
+    cd CrudGenV4
    
    ```
 5. Run the batch file (For Windows)
@@ -60,11 +60,11 @@ This project focuses on automating crudBD operations for JSON files, making it e
 
 3. Clone the repository
    ```
-   git clone https://github.com/keshavsoft/CrudGenV3
+   git clone https://github.com/keshavsoft/CrudGenV4
    ```
-4. Change Directory to CrudGenV3 or Open the cloned folder, navigate to CrudGenV3, and open the command prompt.
+4. Change Directory to CrudGenV4 or Open the cloned folder, navigate to CrudGenV4, and open the command prompt.
    ```
-   cd CrudGenV3
+   cd CrudGenV4
    ```
 5. Create .env in the root location, and paste the below line to that file
    ```
