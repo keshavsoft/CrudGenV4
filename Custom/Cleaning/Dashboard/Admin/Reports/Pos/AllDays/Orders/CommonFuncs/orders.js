@@ -39,7 +39,7 @@ let StartFunc = () => {
 
     let LocalQrCodeData = [
         ...LocalkkdData,
-        ...LocalanrData,
+        // ...LocalanrData,
         // ...LocalcsoData,
         // ...LocalgdData,
         // ...LocalgwkData,
