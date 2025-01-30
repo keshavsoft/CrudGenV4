@@ -1,3 +1,5 @@
+import fs from "fs";
+
 let StartFunc = ({ inFilePath }) => {
     let LocalFilePath = inFilePath;
     const data = fs.readFileSync(LocalFilePath, { encoding: 'utf8' });

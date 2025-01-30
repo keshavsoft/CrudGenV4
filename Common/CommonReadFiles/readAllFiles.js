@@ -8,9 +8,9 @@ let StartFunc = () => {
 
     let LocalDataPath = `${ConfigJson.jsonConfig.DataPath}/${ConfigJson.jsonConfig.DataPk}`;
 
-    let files = LocalFuncReturnAllFiles();
+    let LocalFromAllFiles = LocalFuncReturnAllFiles();
 
-    files.map(filename => {
+    const files = LocalFromAllFiles.map(filename => {
         let LoopInsideObject = {};
         LoopInsideObject.FileName = path.parse(filename).name;
         LoopInsideObject.FileData = StartFuncReadFileData({ inFilePath: `${LocalDataPath}/${filename}` });
@@ -31,6 +31,7 @@ let LocalFuncReturnAllFiles = () => {
 
     return files;
 };
+
 let StartFunc1 = () => {
     let LocalReturnData = { KTF: false }
 
