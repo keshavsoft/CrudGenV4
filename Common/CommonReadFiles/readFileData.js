@@ -1,22 +1,23 @@
 import fs from "fs";
 import path from "path";
-import ConfigJson from '../../../../../binV4/Config.json' assert {type: 'json'};
+import ConfigJson from '../../binV4/Config.json' assert {type: 'json'};
 
 let StartFunc = () => {
     let LocalReturnData = { KTF: false }
+    const data = fs.readFileSync(`${LocalDataPath}/${filename}`, { encoding: 'utf8' });
+    let JsonParseData = JSON.parse(data);
+
+    let LoopInsideObject = {};
+    LoopInsideObject.FileName = path.parse(filename).name;
+    LoopInsideObject.FileData = JsonParseData;
+    return LoopInsideObject;
 
     let LocalDataPath = `${ConfigJson.jsonConfig.DataPath}/${ConfigJson.jsonConfig.DataPk}`;
 
     let files = fs.readdirSync(LocalDataPath)
         .filter(filename => filename.endsWith('.json'))
         .map(filename => {
-            const data = fs.readFileSync(`${LocalDataPath}/${filename}`, { encoding: 'utf8' });
-            let JsonParseData = JSON.parse(data);
-
-            let LoopInsideObject = {};
-            LoopInsideObject.FileName = path.parse(filename).name;
-            LoopInsideObject.FileData = JsonParseData;
-            return LoopInsideObject;
+           
         });
 
     LocalReturnData.KTF = true;
