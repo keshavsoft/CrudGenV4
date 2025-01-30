@@ -24,7 +24,7 @@ let StartFunc = ({ inQrData, inBranchScandata, inEntryScanData, inWashingScanDat
             OrderNo: loopQr.GenerateReference.ReferncePk,
             DeliveryDateTime: loopQr.DeliveryDateTime,
             location: loopQr.location,
-            OrderDateTime: loopQr.BookingData.OrderData.Currentdateandtime,
+            OrderDateTime: formatDateTime(BookingDetails.OrderData.Currentdateandtime),
             // Status: match,  
             BranchScan: loopBranchScanFindData ? true : false,
             BranchScan_DC: loopBranchScanFindData?.VoucherRef,
@@ -137,6 +137,18 @@ function TimeSpan({ inDateTime }) {
     } else {
         return diffMins + " min";
     }
+}
+
+function formatDateTime(orderDateTime) {
+    const date = new Date(orderDateTime);
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0'); 
+    const year = date.getFullYear();
+    let hours = date.getHours();
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const amPm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12 || 12; 
+    return `${day}/${month}/${year} ${hours}:${minutes} ${amPm}`;
 }
 
 export { StartFunc };
