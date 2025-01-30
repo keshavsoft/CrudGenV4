@@ -6,4 +6,10 @@ let GetFunc = async (req, res) => {
     res.json(LocalFromRepo);
 };
 
-export { GetFunc };
+let GetAsArrayFunc = async (req, res) => {
+    let LocalFromRepo = await GetFuncRepo();
+
+    res.json(LocalFromRepo.JsonData);
+};
+
+export { GetFunc, GetAsArrayFunc };
