@@ -27,4 +27,5 @@ let StartFunc = (intableName) => {
 
     return db.data;
 };
+
 export { StartFunc };
