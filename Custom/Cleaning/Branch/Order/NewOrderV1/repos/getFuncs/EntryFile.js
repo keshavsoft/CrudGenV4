@@ -1,7 +1,8 @@
 import {
     GetFunc as GetFuncDal,
     GetOrderShowFunc as GetOrderShowFuncDal,
-    GetRowSettlementFunc as GetRowSettlementFuncDal
+    GetRowSettlementFunc as GetRowSettlementFuncDal,
+    GetInsertOrderFunc as GetInsertOrderFuncDal
 } from '../../dals/getFuncs/EntryFile.js';
 
 let GetFunc = ({ inBranch }) => {
@@ -15,4 +16,8 @@ let GetOrderShowFunc = ({ inBranch, inRow }) => {
 let GetRowSettlementFunc = ({ inBranch, inRow }) => {
     return GetRowSettlementFuncDal({ inBranch, inRow });
 };
-export { GetFunc, GetOrderShowFunc,GetRowSettlementFunc };
+
+let GetInsertOrderFunc = ({ inBranch, inMobile }) => {
+    return GetInsertOrderFuncDal({ inBranch, inMobile });
+};
+export { GetFunc, GetOrderShowFunc, GetRowSettlementFunc, GetInsertOrderFunc };

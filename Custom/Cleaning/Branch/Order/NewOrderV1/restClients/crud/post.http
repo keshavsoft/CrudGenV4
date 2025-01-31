@@ -3,15 +3,6 @@ POST  http://localhost:7318/Custom/Cleaning/Branch/Order/NewOrderV1/BranOrdersKK
 Content-Type: application/json
 
 {
-    "ItemsInOrder": {},
-    "CustomerData": {
-        "CustomerName": "SREE",
-        "CustomerMobile": "8341177771"
-    },
-    "OrderData": {
-        "BranchName": "BranOrdersANR",
-        "Currentdateandtime": "2024-09-24 14:27:35"
-    },
-    "AddOnData": {},
-    "CheckOutData": {}
+    "inCustomerName": "SREE",
+    "inMobileNumber": "8341177771"
 }
