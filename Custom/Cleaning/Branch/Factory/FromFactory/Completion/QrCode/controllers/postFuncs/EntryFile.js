@@ -8,7 +8,7 @@ let PostFunc = (req, res) => {
     let LocalVoucher = LocalBody.VoucherRef;
 
     let LocalFromRepo = PostFuncRepo({
-        inFactory: LocalBranch,
+        inBranch: LocalBranch,
         inDataInsert: LocalBody, inVoucher: LocalVoucher,
         inQrCodeId: LocalQrCode
     });
