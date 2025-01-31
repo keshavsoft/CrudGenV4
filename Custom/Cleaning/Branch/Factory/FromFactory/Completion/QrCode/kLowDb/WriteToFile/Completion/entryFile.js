@@ -3,8 +3,8 @@ import { StartFuncForBookings as StartFuncCheckQrCodes } from "./Check/CheckQrCo
 import { StartFunc as CheckBrcnchScan } from "./Check/CheckBrcnchScan.js";
 const CommonReplaceText = "BranOrders";
 
-let StartFunc = ({ inFactory, inDataInsert, inQrCodeId, inVoucher }) => {
-    let LocalTable = inFactory.replace(CommonReplaceText, "");
+let StartFunc = ({ inBranch, inDataInsert, inQrCodeId, inVoucher }) => {
+    let LocalTable = inBranch.replace(CommonReplaceText, "");
 
     let LocalQrId = inQrCodeId;
     let LocalDataInsert = inDataInsert;
