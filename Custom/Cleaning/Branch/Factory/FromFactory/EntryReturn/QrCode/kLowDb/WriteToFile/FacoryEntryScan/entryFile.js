@@ -3,6 +3,7 @@ import { StartFuncForBookings as StartFuncCheckQrCodes } from "./Check/CheckQrCo
 import { StartFunc as CheckBrcnchScan } from "./Check/CheckBrcnchScan.js";
 
 let StartFunc = ({ inFactory, inDataInsert, inQrCodeId, inVoucher }) => {
+    const modifiedBranch = inFactory.replace("BranOrders", "");
 
     let LocalTable = inFactory;
     let LocalQrId = inQrCodeId;
@@ -10,14 +11,14 @@ let StartFunc = ({ inFactory, inDataInsert, inQrCodeId, inVoucher }) => {
     let LocalVoucher = inVoucher;
     let LocalReturnData = { KTF: false };
 
-    let LocalCheckQrCodes = StartFuncCheckQrCodes({ inTable: LocalTable, inQrId: LocalQrId });
+    let LocalCheckQrCodes = StartFuncCheckQrCodes({ inTable: modifiedBranch, inQrId: LocalQrId });
 
     if (LocalCheckQrCodes.KTF === false) {
         LocalReturnData.KReason = LocalCheckQrCodes.KReason
         return LocalReturnData;
     };
 
-    let LocalCheckBrcnchScan = CheckBrcnchScan({ inTable: LocalTable, inQrCodeId: LocalQrId, inVoucher: LocalVoucher });
+    let LocalCheckBrcnchScan = CheckBrcnchScan({ inTable: modifiedBranch, inQrCodeId: LocalQrId, inVoucher: LocalVoucher });
 
     if (LocalCheckBrcnchScan.KTF === false) {
         LocalReturnData.KReason = LocalCheckBrcnchScan.KReason

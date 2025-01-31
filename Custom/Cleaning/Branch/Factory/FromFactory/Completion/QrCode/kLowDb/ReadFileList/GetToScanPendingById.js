@@ -7,6 +7,8 @@ import { StartFunc as EntryScan } from '../CommonFuncs/FromApi/FromFactoryCancel
 let StartFunc = ({ inBranch, inId }) => {
     // let LocalFindValue = new Date().toLocaleDateString('en-GB').replace(/\//g, '/');
     let LocalBranch = inBranch;
+    const modifiedBranch = LocalBranch.replace("BranOrders", "");
+
     let LocalId = inId;
     const Qrdb = QrCodes();
 
@@ -18,7 +20,7 @@ let StartFunc = ({ inBranch, inId }) => {
 
     let LocalFilterBranchDC = BranchDcdb.filter(e => e.pk == LocalId);
 
-    let LocalFilterBranchScan = BranchScandb.filter(e => e.BranchName === LocalBranch);
+    let LocalFilterBranchScan = BranchScandb.filter(e => e.BranchName === modifiedBranch);
 
     let LocalEntryScanAndDcMergeData = LoclaEntryScanAndDcMergeFunc({
         inBranchScan: LocalFilterBranchScan,

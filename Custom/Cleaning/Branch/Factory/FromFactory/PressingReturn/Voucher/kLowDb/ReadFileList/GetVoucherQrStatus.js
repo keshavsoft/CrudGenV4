@@ -4,11 +4,13 @@ import { StartFunc as FromFactoryCancelScan } from '../CommonFuncs/FromApi/FromF
 
 const StartFunc = ({ inBranch }) => {
     let LocalBranch = inBranch;
+    const modifiedBranch = LocalBranch.replace("BranOrders", "");
+
     const EntryCancelDcData = EntryCancelDc();
     const EntryCancelScanData = EntryCancelScan();
     const FromFactoryCancelScanData = FromFactoryCancelScan();
 
-    const LocalFilterBranchDc = EntryCancelDcData.filter(e => e.Branch === LocalBranch);
+    const LocalFilterBranchDc = EntryCancelDcData.filter(e => e.Branch === modifiedBranch);
 
     const TransformedData = MergeFunc({
         BranchDc: LocalFilterBranchDc,

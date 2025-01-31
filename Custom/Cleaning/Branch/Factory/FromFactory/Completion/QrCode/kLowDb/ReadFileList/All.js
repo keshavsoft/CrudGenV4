@@ -6,13 +6,14 @@ import { StartFunc as EntryCancelDc } from '../CommonFuncs/FromApi/FactoryOut_DC
 let StartFunc = ({ inBranch }) => {
     // let LocalFindValue = new Date().toLocaleDateString('en-GB').replace(/\//g, '/');
     let LocalBranch = inBranch;
+    const modifiedBranch = LocalBranch.replace("BranOrders", "");
 
     const QrCodesData = QrCodes();
     const EntryCancelScanData = EntryCancelScan();
     const FromFactoryCancelScanData = FromFactoryCancelScan();
     const EntryCancelDcData = EntryCancelDc();
 
-    let LocalFilterBranchScan = EntryCancelScanData.filter(e => e.BranchName === LocalBranch);
+    let LocalFilterBranchScan = EntryCancelScanData.filter(e => e.BranchName === modifiedBranch);
 
     let jVarLocalTransformedData = jFLocalMergeFunc({
         inQrData: QrCodesData,

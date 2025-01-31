@@ -5,6 +5,8 @@ import { StartFunc as EntryCancelDc } from '../CommonFuncs/FromApi/EntryCancelDc
 let StartFunc = ({ inBranch, inId }) => {
     // let LocalFindValue = new Date().toLocaleDateString('en-GB').replace(/\//g, '/');
     let LocalBranch = inBranch;
+    const modifiedBranch = LocalBranch.replace("BranOrders", "");
+
     let LocalId = inId;
     const Qrdb = QrCodes();
     const EntryCancelDcdb = EntryCancelDc();
@@ -12,9 +14,9 @@ let StartFunc = ({ inBranch, inId }) => {
 
     let LocalFilterBranchDC = EntryCancelDcdb.filter(e => e.pk == LocalId);
 
-    let LocalFilterQr = Qrdb.filter(e => e.BookingData.OrderData.BranchName === LocalBranch);
+    let LocalFilterQr = Qrdb.filter(e => e.BookingData.OrderData.BranchName === modifiedBranch);
 
-    let LocalFilterEntryScan = EntryCancelScandb.filter(e => e.BranchName === LocalBranch);
+    let LocalFilterEntryScan = EntryCancelScandb.filter(e => e.BranchName === modifiedBranch);
 
     let LocalEntryScanAndDcMergeData = LoclaEntryScanAndDcMergeFunc({ inEntryScan: LocalFilterEntryScan, inBranchDc: LocalFilterBranchDC });
 
