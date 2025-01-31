@@ -14,6 +14,7 @@ npm run AdminAllDays-CommonConfig-QrCodeAtStage-BranchWise
 npm run Admin-Masters
 npm run Accounts
 npm run Dcs
+npm run Orders
 
 cp -r  ./publicDir/* ../CrudGenV4/public/Laundry/Admin
 
