@@ -10,6 +10,4 @@ router.get('/RowData/:inRow/:inBranch', GetOrderShowFunc);
 router.get('/RowSettlement/:inRow/:inBranch', GetRowSettlementFunc);
 router.get('/InSertOrder/:inBranch/:inMobile', GetInsertOrderFunc);
 
-
-
 export { router };

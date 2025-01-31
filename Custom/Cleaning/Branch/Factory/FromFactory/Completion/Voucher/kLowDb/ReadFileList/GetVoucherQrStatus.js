@@ -1,9 +1,11 @@
 import { StartFunc as FactoryOut_DC } from '../CommonFuncs/FromApi/FactoryOut_DC.js';
 import { StartFunc as FactoryOut_QrCodeScan } from '../CommonFuncs/FromApi/FactoryOut_QrCodeScan.js';
 import { StartFunc as FromFactoryCancelScan } from '../CommonFuncs/FromApi/FromFactoryCancelScan.js';
+const CommonReplaceText = "BranOrders";
 
 const StartFunc = ({ inBranch }) => {
-    let LocalBranch = inBranch;
+    let LocalBranch = inBranch.replace(CommonReplaceText, "");
+    
     const EntryCancelDcData = FactoryOut_DC();
     const EntryCancelScanData = FactoryOut_QrCodeScan();
     const FromFactoryCancelScanData = FromFactoryCancelScan();

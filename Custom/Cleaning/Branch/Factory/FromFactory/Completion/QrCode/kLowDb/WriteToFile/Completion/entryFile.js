@@ -1,10 +1,11 @@
 import { StartFunc as StartFuncwriteFileFromModal } from './WithChecking/StartFunc.js';
 import { StartFuncForBookings as StartFuncCheckQrCodes } from "./Check/CheckQrCodes.js";
 import { StartFunc as CheckBrcnchScan } from "./Check/CheckBrcnchScan.js";
+const CommonReplaceText = "BranOrders";
 
 let StartFunc = ({ inFactory, inDataInsert, inQrCodeId, inVoucher }) => {
+    let LocalTable = inFactory.replace(CommonReplaceText, "");
 
-    let LocalTable = inFactory;
     let LocalQrId = inQrCodeId;
     let LocalDataInsert = inDataInsert;
     let LocalVoucher = parseInt(inVoucher);
@@ -30,12 +31,13 @@ let StartFunc = ({ inFactory, inDataInsert, inQrCodeId, inVoucher }) => {
         LocalReturnData.KReason = LocalInsert.KReason
         return LocalReturnData;
     };
+
     LocalReturnData.QrCount = LocalInsert.QrCount;
     LocalReturnData.ScanNo = LocalInsert.ScanNo;
     LocalReturnData.QrData = LocalCheckQrCodes.JsonData;
     LocalReturnData.KTF = true;
-    return LocalReturnData;
 
+    return LocalReturnData;
 };
 
 export { StartFunc };

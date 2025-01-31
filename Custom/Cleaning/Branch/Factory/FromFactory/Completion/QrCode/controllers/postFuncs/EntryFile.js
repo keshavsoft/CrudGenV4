@@ -12,9 +12,8 @@ let PostFunc = (req, res) => {
         inDataInsert: LocalBody, inVoucher: LocalVoucher,
         inQrCodeId: LocalQrCode
     });
+
     res.json(LocalFromRepo);
-
 };
-
 
 export { PostFunc };
