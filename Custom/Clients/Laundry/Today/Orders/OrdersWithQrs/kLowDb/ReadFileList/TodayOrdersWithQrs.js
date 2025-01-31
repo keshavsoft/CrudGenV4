@@ -4,12 +4,8 @@ import { StartFunc as StartFuncQrCodes } from '../CommonFuncs/QrCodes.js';
 let StartFunc = ({ inBranch }) => {
     // let LocalFindValue = "02/09/2024";
     let LocalFindValue = new Date().toLocaleDateString('en-GB').replace(/\//g, '/');
-
     let LocalBranchName = inBranch;
-
-    let LocalReturnData = { KTF: false, JSONFolderPath: "", CreatedLog: {} };
-
-    LocalReturnData.KTF = false;
+    const modifiedBranch = LocalBranchName.replace("BranOrders", "");
 
     const db = StartFuncCommonFuncs({ inBranchName: LocalBranchName });
     db.read();
@@ -22,7 +18,7 @@ let StartFunc = ({ inBranch }) => {
     });
 
     let jVarLocalTransformedData = jFLocalInsertAggValues({ inData: LocalFilterBranchData });
-    let LocalInsertAggValues = jFLocalInsertQrCodeData({ inBranchName: LocalBranchName, inOrderData: jVarLocalTransformedData, inQrCodeData: Qrdb.data });
+    let LocalInsertAggValues = jFLocalInsertQrCodeData({ inBranchName: modifiedBranch, inOrderData: jVarLocalTransformedData, inQrCodeData: Qrdb.data });
     let LocalArrayReverseData = LocalInsertAggValues.slice().reverse();
 
     return LocalArrayReverseData;

@@ -5,13 +5,15 @@ let StartFunc = ({ inBranch }) => {
     let LocalFindValue = new Date().toLocaleDateString('en-GB').replace(/\//g, '/');
 
     let LocalBranchName = inBranch;
+    const modifiedBranch = LocalBranchName.replace("BranOrders", "");
+
     let LocalReturnData = { KTF: false }
 
     const Orderdb = StartFuncCommonFuncs({ inBranchName: LocalBranchName });
     Orderdb.read();
 
     let LocalFilterBranchData = Orderdb.data.filter(e => {
-        return new Date(e.OrderData.Currentdateandtime).toLocaleDateString('en-GB') == LocalFindValue && e.OrderData.BranchName === LocalBranchName;
+        return new Date(e.OrderData.Currentdateandtime).toLocaleDateString('en-GB') == LocalFindValue && e.OrderData.BranchName === modifiedBranch;
     });
 
     if (LocalFilterBranchData.length === 0) {
