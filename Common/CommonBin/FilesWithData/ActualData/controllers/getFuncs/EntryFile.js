@@ -21,5 +21,15 @@ let GetAsArrayFunc = async (req, res) => {
 
     res.status(200).json(LocalFromRepo.JsonData);
 };
+let GetRowWithDataFunc = async (req, res) => {
+    let LocalFromRepo = await GetFuncRepo();
 
-export { GetFunc, GetAsArrayFunc };
+    if (LocalFromRepo.KTF === false) {
+        res.status(500).send(LocalFromRepo.KReason);
+        return;
+    };
+
+    res.status(200).json(LocalFromRepo.JsonData);
+};
+
+export { GetFunc, GetAsArrayFunc, GetRowWithDataFunc};
