@@ -30,8 +30,7 @@ let StartFunc = ({ inBranch }) => {
     };
 
     LocalReturnData.KTF = true;
-    LocalReturnData.inDb = db
-    LocalReturnData.inTableSchema = dbFromDbObjectWithSchema.TableSchema
+    LocalReturnData.inDb = db;
 
     return LocalReturnData;
 };

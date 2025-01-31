@@ -1,18 +1,19 @@
 import { StartFunc as MastersCustomers } from "../../CommonFuncs/MastersCustomers.js";
+import defaultJson from './default.json' with {type: 'json'};
 
-const StartFunc = ({ inDataToInsert, inData, inColumns }) => {
+const StartFunc = ({ inDataToInsert, inData }) => {
     let LocalInData = inData;
     let LocalReturnData = { KTF: false, JSONFolderPath: "", CreatedLog: {} };
-    let LocalDefalultKeys = LocalFuncDefalultKeys({ inColumns });
+    let LocalDefalultKeys = defaultJson;
     let LocalMastersCustomers = MastersCustomers();
     let LocalArrayPk = LocalInData.map(element => element.pk);
     let LocalMastersFindCustomers = LocalMastersCustomers.find(element => element.Mobile == inDataToInsert.CustomerData.CustomerMobile);
-    
+
     if (LocalMastersFindCustomers === undefined) {
         LocalReturnData.KReason = "No Customer Data"
         return LocalReturnData;
     };
-    
+
     let LocalRemoveUndefined = LocalArrayPk.filter(function (element) {
         return element !== undefined;
     });
@@ -35,18 +36,6 @@ const Timestamp = () => {
     let currentDate = new Date();
     let formattedDate = currentDate.toISOString();
     return formattedDate;
-};
-
-const LocalFuncDefalultKeys = ({ inColumns }) => {
-    let LocalinColumns = inColumns;
-
-    let LocalDefaultfilteredObject = Object.fromEntries(
-        Object.entries(LocalinColumns)
-            .filter(([key, value]) => "defaultValue" in value)
-            .map(([key, value]) => [key, value.defaultValue])
-    );
-
-    return LocalDefaultfilteredObject;
 };
 
 export { StartFunc };
