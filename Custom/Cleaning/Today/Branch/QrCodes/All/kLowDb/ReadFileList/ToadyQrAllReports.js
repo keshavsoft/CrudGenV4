@@ -3,8 +3,9 @@ import { StartFunc as BranchScan } from '../CommonFuncs/BranchScan.js';
 
 let StartFunc = ({ inBranch }) => {
     let LocalBranchName = inBranch;
-    const Qrdata = QrCodes({ inBranch: LocalBranchName });
-    const BranchScandata = BranchScan({ inBranch: LocalBranchName });
+    const modifiedBranch = LocalBranchName.replace("BranOrders", "");
+    const Qrdata = QrCodes({ inBranch: modifiedBranch });
+    const BranchScandata = BranchScan({ inBranch: modifiedBranch });
     let jVarLocalTransformedData = jFLocalMergeFunc({ inQrData: Qrdata, inScandata: BranchScandata });
     let LocalArrayReverseData = jVarLocalTransformedData.slice().reverse();
 
