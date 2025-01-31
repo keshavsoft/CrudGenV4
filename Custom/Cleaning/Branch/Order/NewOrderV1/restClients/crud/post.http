@@ -1,15 +1,15 @@
 ### Qr Raise
-POST  http://localhost:7318/Custom/Cleaning/Branch/Order/NewOrder/ANR
+POST  http://localhost:7318/Custom/Cleaning/Branch/Order/NewOrderV1/BranOrdersKKD
 Content-Type: application/json
 
 {
     "ItemsInOrder": {},
     "CustomerData": {
-        "CustomerName": "Keshav",
-        "CustomerMobile": "9848163021"
+        "CustomerName": "SREE",
+        "CustomerMobile": "8341177771"
     },
     "OrderData": {
-        "BranchName": "ANR",
+        "BranchName": "BranOrdersANR",
         "Currentdateandtime": "2024-09-24 14:27:35"
     },
     "AddOnData": {},
