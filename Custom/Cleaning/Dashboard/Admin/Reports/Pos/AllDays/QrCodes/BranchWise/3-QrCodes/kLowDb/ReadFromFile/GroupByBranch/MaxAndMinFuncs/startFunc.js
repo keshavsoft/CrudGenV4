@@ -1,7 +1,6 @@
 import { StartFunc as StartFuncForQrCodes } from "./forQrCodes.js";
 import { StartFunc as forOrderDate } from "./forOrderDate.js";
 
-
 let StartFunc = ({ inGroupedData }) => {
     const grouped = inGroupedData;
 

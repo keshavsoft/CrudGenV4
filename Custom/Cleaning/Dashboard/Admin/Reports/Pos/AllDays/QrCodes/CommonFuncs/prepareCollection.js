@@ -118,7 +118,7 @@ let StartFunc = ({ inQrData, inBranchScandata, inEntryScanData, inPress_ReWashSc
     return jVarLocalReturnObject;
 };
 
-function TimeSpan({ DateTime }) {
+const TimeSpan = ({ DateTime }) => {
     var diffMs = new Date() - new Date(DateTime);
     var diffMonths = Math.floor(diffMs / 2629800000); // approximate months (30.44 days)
     var diffDays = Math.floor((diffMs % 2629800000) / 86400000);
@@ -134,6 +134,6 @@ function TimeSpan({ DateTime }) {
     } else {
         return diffMins + " min";
     }
-}
+};
 
 export { StartFunc };
