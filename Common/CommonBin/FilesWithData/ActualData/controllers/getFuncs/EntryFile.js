@@ -1,4 +1,4 @@
-import { GetFunc as GetFuncRepo } from '../../repos/getFuncs/EntryFile.js';
+import { GetFunc as GetFuncRepo, GetRowWithDataFunc as GetRowWithDataFuncFromRepo } from '../../repos/getFuncs/EntryFile.js';
 
 let GetFunc = async (req, res) => {
     let LocalFromRepo = await GetFuncRepo();
@@ -21,15 +21,16 @@ let GetAsArrayFunc = async (req, res) => {
 
     res.status(200).json(LocalFromRepo.JsonData);
 };
+
 let GetRowWithDataFunc = async (req, res) => {
-    let LocalFromRepo = await GetFuncRepo();
+    let LocalFromRepo = await GetRowWithDataFuncFromRepo();
 
     if (LocalFromRepo.KTF === false) {
         res.status(500).send(LocalFromRepo.KReason);
         return;
     };
 
-    res.status(200).json(LocalFromRepo.JsonData);
+    res.status(200).json(LocalFromRepo);
 };
 
-export { GetFunc, GetAsArrayFunc, GetRowWithDataFunc};
+export { GetFunc, GetAsArrayFunc, GetRowWithDataFunc };

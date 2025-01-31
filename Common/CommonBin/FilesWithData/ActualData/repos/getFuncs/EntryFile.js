@@ -1,11 +1,11 @@
-import { GetFunc as GetFuncDal } from '../../dals/getFuncs/EntryFile.js';
-import { GetFunc as GetRowWithDataFuncDal } from '../../dals/getFuncs/EntryFile.js';
+import { GetFunc as GetFuncDal, GetRowWithDataFunc as GetRowWithDataFuncFromDal } from '../../dals/getFuncs/EntryFile.js';
 
 let GetFunc = () => {
     return GetFuncDal();
 };
+
 let GetRowWithDataFunc = () => {
-    return GetRowWithDataFuncDal();
+    return GetRowWithDataFuncFromDal();
 };
 
 export { GetFunc, GetRowWithDataFunc };

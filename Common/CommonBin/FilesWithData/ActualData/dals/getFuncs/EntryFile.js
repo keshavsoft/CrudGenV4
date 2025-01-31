@@ -9,4 +9,4 @@ let GetRowWithDataFunc = () => {
     return StartRowDataFuncPullData();
 };
 
-export { GetFunc,GetRowWithDataFunc };
+export { GetFunc, GetRowWithDataFunc };
