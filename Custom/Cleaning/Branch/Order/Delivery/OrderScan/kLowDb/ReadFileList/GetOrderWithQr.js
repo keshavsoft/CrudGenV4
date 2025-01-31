@@ -3,10 +3,11 @@ import { StartFunc as F_F_Completion_Scan } from '../CommonFuncs/F_F_Completion_
 import { StartFunc as F_F_Pressing_Return_Scan } from '../CommonFuncs/F_F_Pressing_Return_Scan.js';
 import { StartFunc as EntryCancelScan } from '../CommonFuncs/F_F_Entry_Return_Scan.js';
 import { StartFunc as To_Delivery_Scan } from '../CommonFuncs/To_Delivery_Scan.js';
+const CommonReplaceText = "BranOrders";
 
 const StartFunc = ({ inOrderId, inBranch }) => {
     const LocalOrderId = inOrderId;
-    const LocalBranch = inBranch;
+    const LocalBranch = inBranch.replace(CommonReplaceText, "");
 
     const LocalQrCodes = QrCodes();
     const LocalF_F_Completion_Scan = F_F_Completion_Scan();
