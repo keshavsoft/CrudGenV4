@@ -2,11 +2,10 @@ import { PostFunc as PostFuncRepo } from '../../repos/postFuncs/EntryFile.js';
 
 let PostFunc = (req, res) => {
     let LocalParams = req.params;
-    let LocalCustomerName = LocalParams.inCustomerName;
-    let LocalMobileNumber = LocalParams.inMobileNumber;
-    let LocalBranch = LocalParams.inBranch;
-
     let LocalBody = req.body;
+    let LocalCustomerName = LocalBody.inCustomerName;
+    let LocalMobileNumber = LocalBody.inMobileNumber;
+    let LocalBranch = LocalParams.inBranch;
 
     let LocalFromRepo = PostFuncRepo({ inPostBody: LocalBody, inCustomerName: LocalCustomerName, inMobileNumber: LocalMobileNumber, inBranch: LocalBranch });
 

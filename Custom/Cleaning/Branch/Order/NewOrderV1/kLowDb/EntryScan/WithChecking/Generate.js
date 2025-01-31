@@ -1,13 +1,14 @@
 import { StartFunc as MastersCustomers } from "../../CommonFuncs/MastersCustomers.js";
 import defaultJson from './default.json' assert {type: 'json'};
 
-const StartFunc = ({ inCustomerName, inMobileNumber, inDataToInsert, inData }) => {
+const StartFunc = ({ inMobileNumber, inData }) => {
     let LocalInData = inData;
+    let LocalCustomerNumber = inMobileNumber;
     let LocalReturnData = { KTF: false, JSONFolderPath: "", CreatedLog: {} };
     let LocalDefalultKeys = defaultJson;
     let LocalMastersCustomers = MastersCustomers();
     let LocalArrayPk = LocalInData.map(element => element.pk);
-    let LocalMastersFindCustomers = LocalMastersCustomers.find(element => element.Mobile == inDataToInsert.CustomerData.CustomerMobile);
+    let LocalMastersFindCustomers = LocalMastersCustomers.find(element => element.Mobile === LocalCustomerNumber);
 
     if (LocalMastersFindCustomers === undefined) {
         LocalReturnData.KReason = "No Customer Data"
@@ -23,7 +24,7 @@ const StartFunc = ({ inCustomerName, inMobileNumber, inDataToInsert, inData }) =
     let MaxPk = (Math.max(...numberArray, 0) + 1);
 
     LocalReturnData.InsertData = {
-        ...LocalDefalultKeys, ...inDataToInsert, UuId: MaxPk, pk: MaxPk,
+        ...LocalDefalultKeys, UuId: MaxPk, pk: MaxPk,
         CustomerData: { ...LocalMastersFindCustomers, CustomerMobile: LocalMastersFindCustomers?.Mobile },
         DateTime: Timestamp()
     };
