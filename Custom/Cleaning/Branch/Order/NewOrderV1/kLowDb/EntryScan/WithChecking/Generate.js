@@ -1,11 +1,15 @@
 import { StartFunc as MastersCustomers } from "../../CommonFuncs/MastersCustomers.js";
 import defaultJson from './default.json' assert {type: 'json'};
 
-const StartFunc = ({ inMobileNumber, inData }) => {
+const StartFunc = ({ inMobileNumber, inData, inBranch }) => {
     let LocalInData = inData;
     let LocalCustomerNumber = inMobileNumber;
+    let LocalBranch = inBranch;
+
     let LocalReturnData = { KTF: false, JSONFolderPath: "", CreatedLog: {} };
     let LocalDefalultKeys = defaultJson;
+    const modifiedBranch = LocalBranch.replace("BranOrders", "");
+    LocalDefalultKeys.OrderData.BranchName = modifiedBranch;
     let LocalMastersCustomers = MastersCustomers();
     let LocalArrayPk = LocalInData.map(element => element.pk);
     let LocalMastersFindCustomers = LocalMastersCustomers.find(element => element.Mobile === LocalCustomerNumber);
