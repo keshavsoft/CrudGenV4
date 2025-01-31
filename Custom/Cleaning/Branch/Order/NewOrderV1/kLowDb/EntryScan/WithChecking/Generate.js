@@ -1,5 +1,5 @@
 import { StartFunc as MastersCustomers } from "../../CommonFuncs/MastersCustomers.js";
-import defaultJson from './default.json' with {type: 'json'};
+import defaultJson from './default.json' assert {type: 'json'};
 
 const StartFunc = ({ inDataToInsert, inData }) => {
     let LocalInData = inData;
