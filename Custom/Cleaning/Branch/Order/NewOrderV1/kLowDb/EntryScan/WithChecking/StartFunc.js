@@ -3,9 +3,10 @@ import { StartFunc as LocalFuncGeneratePk } from "./Generate.js";
 
 let StartFunc = ({ inMobile, inBranch }) => {
     let LocalMobile = inMobile;
+    let LocalBranch = inBranch;
     let LocalReturnData = { KTF: false, JSONFolderPath: "", CreatedLog: {} };
 
-    let LocalStartFuncPullData = StartFuncPullData({ inBranch });
+    let LocalStartFuncPullData = StartFuncPullData({ inBranch: LocalBranch });
 
     if (LocalStartFuncPullData.KTF === false) {
         LocalReturnData.KReason = LocalStartFuncPullData.KReason;
@@ -16,7 +17,8 @@ let StartFunc = ({ inMobile, inBranch }) => {
 
     let LocalDataWithUuid = LocalFuncGeneratePk({
         inMobileNumber: LocalMobile,
-        inData: db.data
+        inData: db.data,
+        inBranch: LocalBranch
     });
 
     if (LocalDataWithUuid.KTF === false) {
