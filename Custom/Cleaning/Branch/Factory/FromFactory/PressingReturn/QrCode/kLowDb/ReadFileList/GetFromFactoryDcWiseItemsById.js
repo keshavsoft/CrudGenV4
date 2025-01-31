@@ -5,6 +5,8 @@ import { StartFunc as EntryCancelDc } from '../CommonFuncs/FromApi/PressingCance
 let StartFunc = ({ inBranch, inId }) => {
     // let LocalFindValue = new Date().toLocaleDateString('en-GB').replace(/\//g, '/');
     let LocalBranch = inBranch;
+    const modifiedBranch = LocalBranch.replace("BranOrders", "");
+
     let LocalId = inId;
     const QrData = QrCodes();
 
@@ -12,9 +14,9 @@ let StartFunc = ({ inBranch, inId }) => {
 
     const EntryCancelScanData = EntryCancelScan();
 
-    let LocalFilterQr = QrData.filter(e => e.BookingData.OrderData.BranchName === LocalBranch);
+    let LocalFilterQr = QrData.filter(e => e.BookingData.OrderData.BranchName === modifiedBranch);
 
-    let LocalFilterEntryScan = EntryCancelScanData.filter(e => e.BranchName === LocalBranch);
+    let LocalFilterEntryScan = EntryCancelScanData.filter(e => e.BranchName === modifiedBranch);
     let LocalEntryCancelDcData = EntryCancelDcData.filter(e => e.pk == LocalId);
 
     let LocalEntryScanAndDcMergeData = LoclaEntryScanAndDcMergeFunc({

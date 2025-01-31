@@ -3,9 +3,10 @@ import { StartFunc as FromFactoryCancelScan } from '../CommonFuncs/FromApi/FromF
 import { StartFunc as EntryCancelScan } from '../CommonFuncs/FromApi/PressingCancelScan.js';
 import { StartFunc as EntryCancelDc } from '../CommonFuncs/FromApi/PressingCancelDc.js';
 
-let StartFunc = ({ inFactory }) => {
+let StartFunc = ({ inBranch }) => {
     // let LocalFindValue = new Date().toLocaleDateString('en-GB').replace(/\//g, '/');
-    let LocalFactory = inFactory;
+    let LocalBranch = inBranch;
+    const modifiedBranch = LocalBranch.replace("BranOrders", "");
 
     const QrCodesData = QrCodes();
     const EntryCancelScanData = EntryCancelScan();
@@ -14,7 +15,7 @@ let StartFunc = ({ inFactory }) => {
 
     const EntryCancelDcdat = EntryCancelDc();
 
-    let LocalFilterEntryCancelScanData = FromFactoryCancelScanData.filter(e => e.BranchName === LocalFactory);
+    let LocalFilterEntryCancelScanData = FromFactoryCancelScanData.filter(e => e.BranchName === modifiedBranch);
 
     let jVarLocalTransformedData = jFLocalMergeFunc({
         inQrData: QrCodesData,
