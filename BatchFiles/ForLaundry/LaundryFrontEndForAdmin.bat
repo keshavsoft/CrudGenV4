@@ -15,6 +15,7 @@ call npm run AdminAllDays-CommonConfig-QrCodeAtStage-BranchWise
 call npm run Admin-Masters
 call npm run Accounts
 call npm run Dcs
+call npm run Orders
 
 xcopy .\publicDir ..\CrudGenV4\public\Laundry\Admin /h /i /c /k /e /r /y
 

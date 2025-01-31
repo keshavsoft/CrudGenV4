@@ -3,14 +3,15 @@ import { StartFunc as BranchScan } from '../CommonFuncs/FromApi/BranchScan.js';
 
 let StartFunc = ({ inBranch }) => {
     let LocalBranch = inBranch;
+    const modifiedBranch = LocalBranch.replace("BranOrders", "");
 
     const BranchDcdb = BranchDc();
 
     const EntryScandb = BranchScan();
 
-    let LocalFilterBranchDc = BranchDcdb.filter(e => e.BranchName === LocalBranch);
+    let LocalFilterBranchDc = BranchDcdb.filter(e => e.BranchName === modifiedBranch);
 
-    let LocalFilterEntryScan = EntryScandb.filter(e => e.BranchName === LocalBranch);
+    let LocalFilterEntryScan = EntryScandb.filter(e => e.BranchName === modifiedBranch);
 
     let jVarLocalTransformedData = jFLocalMergeFunc({
         inBranchDc: LocalFilterBranchDc,

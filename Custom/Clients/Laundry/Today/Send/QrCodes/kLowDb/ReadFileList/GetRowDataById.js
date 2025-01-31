@@ -5,6 +5,8 @@ import { StartFunc as BranchDc } from '../CommonFuncs/BranchDC.js';
 let StartFunc = ({ inBranch, inId }) => {
     // let LocalFindValue = new Date().toLocaleDateString('en-GB').replace(/\//g, '/');
     let LocalBranch = inBranch;
+    const modifiedBranch = LocalBranch.replace("BranOrders", "");
+
     let LocalId = inId;
     const Qrdb = QrCodes();
     Qrdb.read();
@@ -16,11 +18,11 @@ let StartFunc = ({ inBranch, inId }) => {
     BranchScandb.read();
 
 
-    let LocalFilterBranchDC = BranchDcdb.data.filter(e => e.pk == LocalId && e.BranchName == LocalBranch);
+    let LocalFilterBranchDC = BranchDcdb.data.filter(e => e.pk == LocalId && e.BranchName == modifiedBranch);
 
-    let LocalFilterQr = Qrdb.data.filter(e => e.BookingData.OrderData.BranchName === LocalBranch);
+    let LocalFilterQr = Qrdb.data.filter(e => e.BookingData.OrderData.BranchName === modifiedBranch);
 
-    let LocalFilterEntryScan = BranchScandb.data.filter(e => e.BranchName === LocalBranch);
+    let LocalFilterEntryScan = BranchScandb.data.filter(e => e.BranchName === modifiedBranch);
 
     let LocalEntryScanAndDcMergeData = LoclaEntryScanAndDcMergeFunc({ inEntryScan: LocalFilterEntryScan, inBranchDc: LocalFilterBranchDC });
 
