@@ -1,7 +1,7 @@
 import { StartFunc as MastersCustomers } from "../../CommonFuncs/MastersCustomers.js";
 import defaultJson from './default.json' assert {type: 'json'};
 
-const StartFunc = ({ inDataToInsert, inData }) => {
+const StartFunc = ({ inCustomerName, inMobileNumber, inDataToInsert, inData }) => {
     let LocalInData = inData;
     let LocalReturnData = { KTF: false, JSONFolderPath: "", CreatedLog: {} };
     let LocalDefalultKeys = defaultJson;
