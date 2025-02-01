@@ -21,9 +21,9 @@ let StartFunc = ({ inFactory, inDataInsert, inQrCodeId, inVoucher }) => {
         return LocalReturnData;
     };
 
-    let LocalCheckF_F_Completion_Scan = CheckF_F_Completion_Scan({ inTable: LocalTable, inQrCodeId: LocalQrId, inVoucher: LocalVoucher });
-    let LocalCheckF_F_Entry_Return_Scan = CheckF_F_Entry_Return_Scan({ inTable: LocalTable, inQrCodeId: LocalQrId, inVoucher: LocalVoucher });
-    let LocalCheckF_F_Pressing_Return_Scan = CheckF_F_Pressing_Return_Scan({ inTable: LocalTable, inQrCodeId: LocalQrId, inVoucher: LocalVoucher });
+    let LocalCheckF_F_Completion_Scan = CheckF_F_Completion_Scan({ inTable: modifiedBranch, inQrCodeId: LocalQrId, inVoucher: LocalVoucher });
+    let LocalCheckF_F_Entry_Return_Scan = CheckF_F_Entry_Return_Scan({ inTable: modifiedBranch, inQrCodeId: LocalQrId, inVoucher: LocalVoucher });
+    let LocalCheckF_F_Pressing_Return_Scan = CheckF_F_Pressing_Return_Scan({ inTable: modifiedBranch, inQrCodeId: LocalQrId, inVoucher: LocalVoucher });
 
     if (LocalCheckF_F_Completion_Scan.KTF === false) {
         if (LocalCheckF_F_Entry_Return_Scan.KTF === false) {
