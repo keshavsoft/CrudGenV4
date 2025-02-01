@@ -8,6 +8,7 @@ import { StartFunc as To_Delivery_Scan } from '../CommonFuncs/To_Delivery_Scan.j
 let StartFunc = ({ inOrderId, inBranch }) => {
     let LocalOrderId = inOrderId;
     let LocalBranch = inBranch;
+    const modifiedBranch = LocalBranch.replace("BranOrders", "");
 
     const LocalQrCodes = QrCodes();
     const LocalF_F_Completion_Scan = F_F_Completion_Scan();
@@ -17,7 +18,7 @@ let StartFunc = ({ inOrderId, inBranch }) => {
 
     const LocalBranchTable = BranchTable(LocalBranch);
 
-    let LocalFilterQrCodes = LocalQrCodes.filter(e => e.BookingData.OrderData.BranchName === LocalBranch && e.OrderNumber == LocalOrderId);
+    let LocalFilterQrCodes = LocalQrCodes.filter(e => e.BookingData.OrderData.BranchName === modifiedBranch && e.OrderNumber == LocalOrderId);
     let LocalFindOrder = LocalBranchTable.find(e => e.pk == LocalOrderId);
 
     if (LocalFilterQrCodes.length === 0) return false;

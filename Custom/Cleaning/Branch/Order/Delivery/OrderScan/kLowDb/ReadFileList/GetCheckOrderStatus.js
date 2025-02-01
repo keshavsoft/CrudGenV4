@@ -15,6 +15,7 @@ let StartFunc = ({ inOrderId, inBranch }) => {
     // let LocalFindValue = new Date().toLocaleDateString('en-GB').replace(/\//g, '/');
     let LocalOrderId = inOrderId;
     let LocalBranch = inBranch;
+    const modifiedBranch = LocalBranch.replace("BranOrders", "");
 
     const LocalQrCodes = QrCodes();
 
@@ -35,7 +36,7 @@ let StartFunc = ({ inOrderId, inBranch }) => {
 
     // console.log("LocalTo_Delivery_Scan;",LocalTo_Delivery_Scan);
 
-    let LocalFilterQrCodes = LocalQrCodes.filter(e => e.BookingData.OrderData.BranchName === LocalBranch && e.OrderNumber == LocalOrderId);
+    let LocalFilterQrCodes = LocalQrCodes.filter(e => e.BookingData.OrderData.BranchName === modifiedBranch && e.OrderNumber == LocalOrderId);
 
     if (LocalFilterQrCodes.length === 0) return false;
 

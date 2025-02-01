@@ -7,12 +7,14 @@ import { StartFunc as CheckF_F_Pressing_Return_Scan } from "./Check/CheckF_F_Pre
 let StartFunc = ({ inFactory, inDataInsert, inQrCodeId, inVoucher }) => {
 
     let LocalTable = inFactory;
+    const modifiedBranch = LocalTable.replace("BranOrders", "");
+
     let LocalQrId = inQrCodeId;
     let LocalDataInsert = inDataInsert;
     let LocalVoucher = parseInt(inVoucher);
     let LocalReturnData = { KTF: false };
 
-    let LocalCheckQrCodes = StartFuncCheckQrCodes({ inTable: LocalTable, inQrId: LocalQrId });
+    let LocalCheckQrCodes = StartFuncCheckQrCodes({ inTable: modifiedBranch, inQrId: LocalQrId });
 
     if (LocalCheckQrCodes.KTF === false) {
         LocalReturnData.KReason = LocalCheckQrCodes.KReason
