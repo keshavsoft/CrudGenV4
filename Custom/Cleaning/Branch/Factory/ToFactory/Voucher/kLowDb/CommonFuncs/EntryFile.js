@@ -28,6 +28,7 @@ let jFLocalMergeFunc = ({ inBranchDc, inBranchScan, inEntryScanData }) => {
         loopDc.ItemDetails = LocalFilterData.length;
         loopDc.EntryScan = LocalScanFilter;
         loopDc.EntryScanCount = LocalScanFilter.length;
+        loopDc.pending=LocalFilterData.length-LocalScanFilter.length
         loopDc.EntryDc = LocalScanFilter.length > 0;
         loopDc.TimeSpan = TimeSpan(loopDc?.DateTime);
         return loopDc;
