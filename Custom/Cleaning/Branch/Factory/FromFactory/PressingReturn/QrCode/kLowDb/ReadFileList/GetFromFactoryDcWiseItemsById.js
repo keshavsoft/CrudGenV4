@@ -1,6 +1,8 @@
 import { StartFunc as QrCodes } from '../CommonFuncs/FromApi/QrCodes.js';
 import { StartFunc as EntryCancelScan } from '../CommonFuncs/FromApi/PressingCancelScan.js';
 import { StartFunc as EntryCancelDc } from '../CommonFuncs/FromApi/PressingCancelDc.js';
+import { StartFunc as FFPressingReturn } from '../CommonFuncs/FromApi/FFPressingReturn.js';
+
 
 let StartFunc = ({ inBranch, inId }) => {
     // let LocalFindValue = new Date().toLocaleDateString('en-GB').replace(/\//g, '/');
@@ -14,6 +16,8 @@ let StartFunc = ({ inBranch, inId }) => {
 
     const EntryCancelScanData = EntryCancelScan();
 
+    const FFPressing = FFPressingReturn();
+
     let LocalFilterQr = QrData.filter(e => e.BookingData.OrderData.BranchName === modifiedBranch);
 
     let LocalFilterEntryScan = EntryCancelScanData.filter(e => e.BranchName === modifiedBranch);
@@ -26,7 +30,8 @@ let StartFunc = ({ inBranch, inId }) => {
 
     let jVarLocalTransformedData = jFLocalMergeFunc({
         inQrData: LocalFilterQr,
-        inEntryScan: LocalEntryScanAndDcMergeData
+        inEntryScan: LocalEntryScanAndDcMergeData,
+        inFFPressing:FFPressing
     });
 
     let LocalArrayReverseData = jVarLocalTransformedData.slice().reverse();
@@ -34,10 +39,10 @@ let StartFunc = ({ inBranch, inId }) => {
     return LocalArrayReverseData;
 };
 
-let jFLocalMergeFunc = ({ inQrData, inEntryScan }) => {
+let jFLocalMergeFunc = ({ inQrData, inEntryScan,inFFPressing }) => {
     let jVarLocalReturnObject = inEntryScan.map(loopScan => {
         const matchedRecord = inQrData.find(loopQr => loopQr.pk == loopScan.QrCodeId);
-        const matche = inEntryScan.some(loopQr => loopQr.QrCodeId == loopScan.QrCodeId);
+        const matche = inFFPressing.some(loopQr => loopQr.QrCodeId == loopQr.QrCodeId);
 
 
         return {
