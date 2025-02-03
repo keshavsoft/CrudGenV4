@@ -1,6 +1,7 @@
 import { StartFunc as QrCodes } from '../CommonFuncs/FromApi/QrCodes.js';
 import { StartFunc as EntryCancelScan } from '../CommonFuncs/FromApi/FactoryOut_QrCodeScan.js';
 import { StartFunc as EntryCancelDc } from '../CommonFuncs/FromApi/FactoryOut_DC.js';
+import { StartFunc as FFCompletion } from '../CommonFuncs/FromApi/FFCompletion.js';
 
 let StartFunc = ({ inBranch, inId }) => {
     // let LocalFindValue = new Date().toLocaleDateString('en-GB').replace(/\//g, '/');
@@ -13,6 +14,7 @@ let StartFunc = ({ inBranch, inId }) => {
     const EntryCancelDcData = EntryCancelDc();
 
     const EntryCancelScanData = EntryCancelScan();
+    const CompletionStatus = FFCompletion();
 
     let LocalFilterEntryScan = EntryCancelScanData.filter(e => e.BranchName === modifiedBranch);
     let LocalEntryCancelDcData = EntryCancelDcData.filter(e => e.pk == LocalId);
@@ -24,7 +26,8 @@ let StartFunc = ({ inBranch, inId }) => {
 
     let jVarLocalTransformedData = jFLocalMergeFunc({
         inQrData: QrData,
-        inEntryScan: LocalEntryScanAndDcMergeData
+        inEntryScan: LocalEntryScanAndDcMergeData,
+        inCompletion:CompletionStatus
     });
 
     let LocalArrayReverseData = jVarLocalTransformedData.slice().reverse();
@@ -32,10 +35,10 @@ let StartFunc = ({ inBranch, inId }) => {
     return LocalArrayReverseData;
 };
 
-let jFLocalMergeFunc = ({ inQrData, inEntryScan }) => {
+let jFLocalMergeFunc = ({ inQrData, inEntryScan,inCompletion }) => {
     let jVarLocalReturnObject = inEntryScan.map(loopScan => {
         const matchedRecord = inQrData.find(loopQr => loopQr.pk == loopScan.QrCodeId);
-        const match = inEntryScan.some(loopQr => loopQr.QrCodeId == loopScan.QrCodeId);
+        const match = inCompletion.some(loopQr => loopQr.QrCodeId == loopQr.QrCodeId);
 
 
         return {
