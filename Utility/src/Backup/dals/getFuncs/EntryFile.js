@@ -5,12 +5,11 @@ import fs from 'fs';
 import * as url from 'url';
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
-import configJson from '../../../../binV4/Config.json' assert { type: 'json' };
+import configJson from '../../../../../binV4/Config.json' assert { type: 'json' };
 
-const LocalDataPath = `../../../../${configJson.jsonConfig.DataPath}`;
+const LocalDataPath = `../../../../../${configJson.jsonConfig.DataPath}`;
 
 let GetFunc = ({ inResponse, callback }) => {
-
     let LocalUserPK = configJson.jsonConfig.DataPk;
 
     if (LocalUserPK > 0) {
