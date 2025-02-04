@@ -3,7 +3,7 @@ import { StartFunc as StartFuncQrCodes } from '../CommonFuncs/QrCodes.js';
 
 let StartFunc = ({ inBranch }) => {
     // let LocalFindValue = "02/09/2024";
-    let LocalFindValue = new Date().toLocaleDateString('en-GB').replace(/\//g, '/');
+    // let LocalFindValue = new Date().toLocaleDateString('en-GB').replace(/\//g, '/');
     let LocalBranchName = inBranch;
     const modifiedBranch = LocalBranchName.replace("BranOrders", "");
 
@@ -14,8 +14,9 @@ let StartFunc = ({ inBranch }) => {
     Qrdb.read();
 
     let LocalFilterBranchData = db.data.filter(e => {
-        return new Date(e.OrderData.Currentdateandtime).toLocaleDateString('en-GB') == LocalFindValue;
+        return new Date(e.OrderData.Currentdateandtime).toLocaleDateString('en-GB');
     });
+
 
     let jVarLocalTransformedData = jFLocalInsertAggValues({ inData: LocalFilterBranchData });
     let LocalInsertAggValues = jFLocalInsertQrCodeData({ inBranchName: modifiedBranch, inOrderData: jVarLocalTransformedData, inQrCodeData: Qrdb.data });
@@ -26,7 +27,6 @@ let StartFunc = ({ inBranch }) => {
 
 let jFLocalInsertAggValues = ({ inData }) => {
     let jVarLocalReturnObject = [];
-
     jVarLocalReturnObject = Object.entries(inData).map(element => {
         element[1].AggValues = {};
         element[1].IsSettled = false;
