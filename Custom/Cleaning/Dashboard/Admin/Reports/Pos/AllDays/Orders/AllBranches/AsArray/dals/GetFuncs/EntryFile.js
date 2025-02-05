@@ -1,7 +1,9 @@
 import { StartFunc as TodayAllQrCodes } from '../../kLowDb/ReadFromFile/withRows.js';
+import { StartFunc as StartFuncmergeArray } from '../../kLowDb/ReadFromFile/mergeArray.js';
+
 
 let GetAllFuncs = () => {
-    return TodayAllQrCodes();
+    return StartFuncmergeArray();
 };
 
 let GetWithRowsFuncs = () => {
