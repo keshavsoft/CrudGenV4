@@ -2,10 +2,12 @@ import express from "express";
 
 var router = express.Router();
 
-import { router as Orders } from "./Orders/routes.js";
-import { router as BranchWise } from "./BranchWise/routes.js";
+import { router as routerForOrders } from "./Orders/routes.js";
+import { router as routerForBranchWise } from "./BranchWise/routes.js";
+import { router as routerForAsArray } from "./AsArray/routes.js";
 
-router.use("/Orders", Orders);
-router.use("/BranchWise", BranchWise);
+router.use("/Orders", routerForOrders);
+router.use("/BranchWise", routerForBranchWise);
+router.use("/AsArray", routerForAsArray);
 
 export { router };
