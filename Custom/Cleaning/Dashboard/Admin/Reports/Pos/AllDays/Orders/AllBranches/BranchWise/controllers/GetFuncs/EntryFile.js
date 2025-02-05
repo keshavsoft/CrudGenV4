@@ -15,9 +15,7 @@ let GetFuncs = (req, res) => {
     res.status(200).json(LocalFromRepo);
 };
 
-
 let GetWithRowsFuncs = (req, res) => {
-
     let LocalFromRepo = GetWithRowsFuncsRepo();
 
     if (LocalFromRepo.KTF === false) {

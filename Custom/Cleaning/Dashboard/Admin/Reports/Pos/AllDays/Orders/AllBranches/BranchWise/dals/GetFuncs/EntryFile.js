@@ -1,12 +1,12 @@
-import { StartFunc as TodayAllQrCodes } from '../../kLowDb/ReadFromFile/withRows.js';
-import { StartFunc as StartFuncAsIs } from '../../kLowDb/ReadFromFile/AsIs.js';
+import { StartFunc as StartFuncWithRows } from '../../kLowDb/ReadFromFile/withRows.js';
+import { StartFunc as StartFuncAsIs } from '../../kLowDb/ReadFromFile/asIs.js';
 
 let GetAllFuncs = () => {
     return StartFuncAsIs();
 };
 
 let GetWithRowsFuncs = () => {
-    return TodayAllQrCodes();
+    return StartFuncWithRows();
 };
 
 export {
