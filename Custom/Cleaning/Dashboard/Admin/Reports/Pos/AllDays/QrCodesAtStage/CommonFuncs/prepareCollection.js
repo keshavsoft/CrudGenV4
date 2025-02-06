@@ -23,7 +23,7 @@ let StartFunc = ({ inQrData, inBranchScandata, inEntryScanData, inWashingScanDat
             OrderNo: loopQr.GenerateReference.ReferncePk,
             DeliveryDateTime: loopQr.DeliveryDateTime,
             location: loopQr.location,
-            // OrderDateTime: formatDateTime(BookingDetails.OrderData.Currentdateandtime),
+            OrderDateTime: formatDateTime(loopQr.BookingData.OrderData.Currentdateandtime),
             // Status: match,  
             BranchScan: loopBranchScanFindData ? true : false,
             BranchScan_DC: loopBranchScanFindData?.VoucherRef,
