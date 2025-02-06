@@ -46,7 +46,7 @@ let jFLocalMergeFunc = ({ inQrData, inScandata, inReWashDC }) => {
             ReWash:loopScan.ReWash,
             VoucherNumber: matchedReWashDC?.VoucherRef,
             QrCodeId: loopScan.QrCodeId,
-            DCDate: new Date(matchedReWashDC?.Date).toLocaleDateString('en-GB'),
+            DCDate: new Date(loopScan?.DCDate).toLocaleDateString('en-GB'),
             TimeSpan: TimeSpan({ DateTime: loopScan.DateTime })
         };
     }).filter(record => record.MatchedRecord !== null);
