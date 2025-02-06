@@ -2,6 +2,7 @@ import {
     GetFunc as GetFuncDal,
     GetQrStatusFunc as GetQrStatusFuncDal,
     GetSummaryFunc as GetSummaryFuncDal,
+    GetAsIsFunc as GetAsIsFuncDal,
     GetRowDataFunc as GetRowDataFuncDal,
     GetAggregateFunc as GetAggregateFuncDal,
 } from '../../dals/getFuncs/EntryFile.js';
@@ -18,6 +19,10 @@ let GetSummaryFunc = ({ inFactory }) => {
     return GetSummaryFuncDal({ inFactory });
 };
 
+let GetAsIsFunc = ({ inFactory }) => {
+    return GetAsIsFuncDal({ inFactory });
+};
+
 let GetRowDataFunc = ({ inId }) => {
     return GetRowDataFuncDal({ inId });
 };
@@ -27,5 +32,5 @@ let GetAggregateFunc = ({ inId }) => {
 };
 
 export {
-    GetFunc, GetQrStatusFunc, GetSummaryFunc, GetRowDataFunc, GetAggregateFunc
+    GetFunc, GetQrStatusFunc, GetSummaryFunc, GetAsIsFunc, GetRowDataFunc, GetAggregateFunc
 };
