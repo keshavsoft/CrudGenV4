@@ -1,5 +1,4 @@
 let StartFunc = ({ inQrData, inBranchScandata, inEntryScanData, inWashingScanData, inPressingScanData, inCompletionScanData, inPressingRejectScanData, inFactoryToBranch, inEntryRejectScanData, inPressingReWashScanData, inDeliveryData, inF_F_Entry_Return_ScanData, inF_F_Pressing_Return_ScanData, inF_F_Completion_ScanData, inTo_Delivery_ScanData }) => {
-
     let jVarLocalReturnObject = inQrData.map(loopQr => {
         const loopBranchScanFindData = inBranchScandata.find(loopScan => loopScan.QrCodeId == loopQr.pk);
         const LoopInsideFindEntryScan = inEntryScanData.find(loopScan => loopScan.QrCodeId == loopQr.pk);
@@ -24,7 +23,7 @@ let StartFunc = ({ inQrData, inBranchScandata, inEntryScanData, inWashingScanDat
             OrderNo: loopQr.GenerateReference.ReferncePk,
             DeliveryDateTime: loopQr.DeliveryDateTime,
             location: loopQr.location,
-            OrderDateTime: formatDateTime(BookingDetails.OrderData.Currentdateandtime),
+            // OrderDateTime: formatDateTime(BookingDetails.OrderData.Currentdateandtime),
             // Status: match,  
             BranchScan: loopBranchScanFindData ? true : false,
             BranchScan_DC: loopBranchScanFindData?.VoucherRef,
@@ -142,12 +141,12 @@ function TimeSpan({ inDateTime }) {
 function formatDateTime(orderDateTime) {
     const date = new Date(orderDateTime);
     const day = String(date.getDate()).padStart(2, '0');
-    const month = String(date.getMonth() + 1).padStart(2, '0'); 
+    const month = String(date.getMonth() + 1).padStart(2, '0');
     const year = date.getFullYear();
     let hours = date.getHours();
     const minutes = String(date.getMinutes()).padStart(2, '0');
     const amPm = hours >= 12 ? 'PM' : 'AM';
-    hours = hours % 12 || 12; 
+    hours = hours % 12 || 12;
     return `${day}/${month}/${year} ${hours}:${minutes} ${amPm}`;
 }
 
