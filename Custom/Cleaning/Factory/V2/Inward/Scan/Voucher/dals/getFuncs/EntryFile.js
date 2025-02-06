@@ -1,4 +1,5 @@
 import { StartFunc as GetVoucherQrStatus } from '../../kLowDb/ReadFiles/GetVoucherQrStatus.js';
+import { StartFunc as GetSummary } from '../../kLowDb/ReadFiles/GetSummary.js';
 import { StartFunc as GetVoucher } from '../../kLowDb/ReadFiles/GetVoucher.js';
 import { StartFunc as GetRowData } from '../../kLowDb/ReadFiles/GetRowData.js';
 
@@ -8,6 +9,10 @@ let GetFunc = ({ inFactory }) => {
 
 let GetQrStatusFunc = ({ inFactory }) => {
     return GetVoucherQrStatus({ inFactory });
+};
+
+let GetSummaryFunc = ({ inFactory }) => {
+    return GetSummary({ inFactory });
 };
 
 let GetRowDataFunc = ({ inId }) => {
@@ -20,5 +25,5 @@ let GetAggregateFunc = ({ inId }) => {
 };
 
 export {
-    GetFunc, GetQrStatusFunc, GetRowDataFunc, GetAggregateFunc
+    GetFunc, GetQrStatusFunc, GetSummaryFunc, GetRowDataFunc, GetAggregateFunc
 };
