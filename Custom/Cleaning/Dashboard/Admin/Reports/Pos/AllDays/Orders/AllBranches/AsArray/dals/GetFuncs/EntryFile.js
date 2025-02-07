@@ -4,6 +4,14 @@ let GetAllFuncs = () => {
     return StartFuncmergeArray();
 };
 
+let SimpleFuncs = () => {
+    return StartFuncmergeArray();
+};
+
+let ItemCountFuncs = () => {
+    return StartFuncmergeArray();
+};
+
 export {
-    GetAllFuncs
+    GetAllFuncs, SimpleFuncs, ItemCountFuncs
 };
