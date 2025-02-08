@@ -2,7 +2,7 @@
 cd ..\VoltUI
 git pull
 
-del /s /q .\publicDir\*
+rmdir /s /q .\publicDir\*
 
 call gulp build:publicDir
 
