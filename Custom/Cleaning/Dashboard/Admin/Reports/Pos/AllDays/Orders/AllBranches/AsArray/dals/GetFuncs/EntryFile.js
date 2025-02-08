@@ -1,5 +1,7 @@
 import { StartFunc as StartFuncmergeArray } from '../../kLowDb/ReadFromFile/mergeArray.js';
 import { StartFunc as StartFuncsimple } from '../../kLowDb/ReadFromFile/simple.js';
+import { StartFunc as StartFuncitemCount } from '../../kLowDb/ReadFromFile/itemCount.js';
+
 
 
 let GetAllFuncs = () => {
@@ -11,7 +13,7 @@ let SimpleFuncs = () => {
 };
 
 let ItemCountFuncs = () => {
-    return StartFuncmergeArray();
+    return StartFuncitemCount();
 };
 
 export {
