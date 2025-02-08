@@ -2,6 +2,9 @@ import { StartFunc as StartFuncmergeArray } from '../../kLowDb/ReadFromFile/merg
 import { StartFunc as StartFuncsimple } from '../../kLowDb/ReadFromFile/simple.js';
 import { StartFunc as StartFuncitemCount } from '../../kLowDb/ReadFromFile/itemCount.js';
 import { StartFunc as StartFuncisSettled } from '../../kLowDb/ReadFromFile/isettled.js';
+import { StartFunc as StartFuncwithSettle } from '../../kLowDb/ReadFromFile/withSettle.js';
+import { StartFunc as StartFuncwithDelivery } from '../../kLowDb/ReadFromFile/withDelivery.js';
+
 
 let GetAllFuncs = () => {
     return StartFuncmergeArray();
@@ -20,11 +23,11 @@ let GetIsSettledFuncs = () => {
 };
 
 let GetWithSettlementFuncs = () => {
-    return StartFuncmergeArray();
+    return StartFuncwithSettle();
 };
 
 let GetWithDeliveryFuncs = () => {
-    return StartFuncmergeArray();
+    return StartFuncwithDelivery();
 };
 
 export {
