@@ -3,14 +3,14 @@ import express from 'express';
 var router = express.Router();
 
 import {
-    GetFuncs, SimpleFuncs, ItemCountFuncs, IsSettledFuncs, WithSettlementFuncs, WithDeliveryFuncs
+    GetFuncs, GetSimpleFuncs, GetItemCountFuncs, GetIsSettledFuncs, GetWithSettlementFuncs, GetWithDeliveryFuncs
 } from '../../controllers/GetFuncs/EntryFile.js';
 
 router.get('/', GetFuncs);
-router.get('/Simple', SimpleFuncs);
-router.get('/ItemCount', ItemCountFuncs);
-router.get('/IsSettled', IsSettledFuncs);
-router.get('/WithSettlement,', WithSettlementFuncs);
-router.get('/WithDelivery,', WithDeliveryFuncs);
+router.get('/Simple', GetSimpleFuncs);
+router.get('/ItemCount', GetItemCountFuncs);
+router.get('/IsSettled', GetIsSettledFuncs);
+router.get('/WithSettlement,', GetWithSettlementFuncs);
+router.get('/WithDelivery,', GetWithDeliveryFuncs);
 
 export { router };

@@ -1,10 +1,10 @@
 import {
     GetFuncs as GetFuncsRepo,
-    SimpleFuncs as SimpleFuncsRepo,
-    ItemCountFuncs as ItemCountFuncsRepo,
-    IsSettledFuncs as IsSettledFuncsRepo,
-    WithSettlementFuncs as WithSettlementFuncsRepo,
-    WithDeliveryFuncs as WithDeliveryFuncsRepo
+    GetSimpleFuncs as GetSimpleFuncsRepo,
+    GetItemCountFuncs as GetItemCountFuncsRepo,
+    GetIsSettledFuncs as GetIsSettledFuncsRepo,
+    GetWithSettlementFuncs as GetWithSettlementFuncsRepo,
+    GetWithDeliveryFuncs as GetWithDeliveryFuncsRepo
 
 } from '../../repos/GetFuncs/EntryFile.js';
 
@@ -19,8 +19,8 @@ let GetFuncs = (req, res) => {
     res.status(200).json(LocalFromRepo);
 };
 
-let SimpleFuncs = (req, res) => {
-    let LocalFromRepo = SimpleFuncsRepo();
+let GetSimpleFuncs = (req, res) => {
+    let LocalFromRepo = GetSimpleFuncsRepo();
 
     if (LocalFromRepo.KTF === false) {
         res.status(500).send(LocalFromRepo.KReason);
@@ -30,8 +30,8 @@ let SimpleFuncs = (req, res) => {
     res.status(200).json(LocalFromRepo);
 };
 
-let ItemCountFuncs = (req, res) => {
-    let LocalFromRepo = ItemCountFuncsRepo();
+let GetItemCountFuncs = (req, res) => {
+    let LocalFromRepo = GetItemCountFuncsRepo();
 
     if (LocalFromRepo.KTF === false) {
         res.status(500).send(LocalFromRepo.KReason);
@@ -41,8 +41,8 @@ let ItemCountFuncs = (req, res) => {
     res.status(200).json(LocalFromRepo);
 };
 
-let IsSettledFuncs = (req, res) => {
-    let LocalFromRepo = IsSettledFuncsRepo();
+let GetIsSettledFuncs = (req, res) => {
+    let LocalFromRepo = GetIsSettledFuncsRepo();
 
     if (LocalFromRepo.KTF === false) {
         res.status(500).send(LocalFromRepo.KReason);
@@ -52,8 +52,8 @@ let IsSettledFuncs = (req, res) => {
     res.status(200).json(LocalFromRepo);
 };
 
-let WithSettlementFuncs = (req, res) => {
-    let LocalFromRepo = WithSettlementFuncsRepo();
+let GetWithSettlementFuncs = (req, res) => {
+    let LocalFromRepo = GetWithSettlementFuncsRepo();
 
     if (LocalFromRepo.KTF === false) {
         res.status(500).send(LocalFromRepo.KReason);
@@ -63,8 +63,8 @@ let WithSettlementFuncs = (req, res) => {
     res.status(200).json(LocalFromRepo);
 };
 
-let WithDeliveryFuncs = (req, res) => {
-    let LocalFromRepo = WithDeliveryFuncsRepo();
+let GetWithDeliveryFuncs = (req, res) => {
+    let LocalFromRepo = GetWithDeliveryFuncsRepo();
 
     if (LocalFromRepo.KTF === false) {
         res.status(500).send(LocalFromRepo.KReason);
@@ -75,5 +75,5 @@ let WithDeliveryFuncs = (req, res) => {
 };
 
 export {
-    GetFuncs, SimpleFuncs, ItemCountFuncs, IsSettledFuncs, WithSettlementFuncs, WithDeliveryFuncs
+    GetFuncs, GetSimpleFuncs, GetItemCountFuncs, GetIsSettledFuncs, GetWithSettlementFuncs, GetWithDeliveryFuncs
 };
