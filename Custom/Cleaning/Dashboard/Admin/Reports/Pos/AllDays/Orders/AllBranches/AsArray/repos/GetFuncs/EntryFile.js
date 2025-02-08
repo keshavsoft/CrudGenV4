@@ -1,10 +1,10 @@
 import {
     GetAllFuncs as GetAllFuncsDal,
-    SimpleFuncs as SimpleFuncsDal,
-    ItemCountFuncs as ItemCountFuncsDal,
-    IsSettledFuncs as IsSettledFuncsDal,
-    WithSettlementFuncs as WithSettlementFuncsDal,
-    WithDeliveryFuncs as WithDeliveryFuncsDal
+    GetSimpleFuncs as GetSimpleFuncsDal,
+    GetItemCountFuncs as GetItemCountFuncsDal,
+    GetIsSettledFuncs as GetIsSettledFuncsDal,
+    GetWithSettlementFuncs as GetWithSettlementFuncsDal,
+    GetWithDeliveryFuncs as GetWithDeliveryFuncsDal
 
 } from '../../dals/GetFuncs/EntryFile.js';
 
@@ -12,26 +12,26 @@ let GetFuncs = () => {
     return GetAllFuncsDal();
 };
 
-let SimpleFuncs = () => {
-    return SimpleFuncsDal();
+let GetSimpleFuncs = () => {
+    return GetSimpleFuncsDal();
 };
 
-let ItemCountFuncs = () => {
-    return ItemCountFuncsDal();
+let GetItemCountFuncs = () => {
+    return GetItemCountFuncsDal();
 };
 
-let IsSettledFuncs = () => {
-    return IsSettledFuncsDal();
+let GetIsSettledFuncs = () => {
+    return GetIsSettledFuncsDal();
 };
 
-let WithSettlementFuncs = () => {
-    return WithSettlementFuncsDal();
+let GetWithSettlementFuncs = () => {
+    return GetWithSettlementFuncsDal();
 };
 
-let WithDeliveryFuncs = () => {
-    return WithDeliveryFuncsDal();
+let GetWithDeliveryFuncs = () => {
+    return GetWithDeliveryFuncsDal();
 };
 
 export {
-    GetFuncs, SimpleFuncs, ItemCountFuncs, IsSettledFuncs, WithSettlementFuncs, WithDeliveryFuncs
+    GetFuncs, GetSimpleFuncs, GetItemCountFuncs, GetIsSettledFuncs, GetWithSettlementFuncs, GetWithDeliveryFuncs
 };
