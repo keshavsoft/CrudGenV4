@@ -10,7 +10,7 @@ router.get('/', GetFuncs);
 router.get('/Simple', GetSimpleFuncs);
 router.get('/ItemCount', GetItemCountFuncs);
 router.get('/IsSettled', GetIsSettledFuncs);
-router.get('/WithSettlement,', GetWithSettlementFuncs);
-router.get('/WithDelivery,', GetWithDeliveryFuncs);
+router.get('/WithSettlement', GetWithSettlementFuncs);
+router.get('/WithDelivery', GetWithDeliveryFuncs);
 
 export { router };
