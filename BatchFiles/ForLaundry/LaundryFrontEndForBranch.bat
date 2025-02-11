@@ -23,6 +23,10 @@ call npm run FromFactory-PressingReturnQrCodes
 call npm run FromFactory-CompletionQrCodes
 call npm run Dashboard-QrCodeAtStage-BranchFilter
 call npm run Delivery
+call npm run Orders
+call npm run Payments
+call npm run QrCodes
+
 
 xcopy .\publicDir ..\CrudGenV4\public\Laundry\Branch /h /i /c /k /e /r /y
 
