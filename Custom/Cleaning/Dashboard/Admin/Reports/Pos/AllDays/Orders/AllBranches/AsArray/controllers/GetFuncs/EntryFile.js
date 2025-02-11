@@ -4,7 +4,8 @@ import {
     GetItemCountFuncs as GetItemCountFuncsRepo,
     GetIsSettledFuncs as GetIsSettledFuncsRepo,
     GetWithSettlementFuncs as GetWithSettlementFuncsRepo,
-    GetWithDeliveryFuncs as GetWithDeliveryFuncsRepo
+    GetWithDeliveryFuncs as GetWithDeliveryFuncsRepo,
+    GetSortByDateFuncs as GetSortByDateFuncsRepo
 
 } from '../../repos/GetFuncs/EntryFile.js';
 
@@ -74,6 +75,17 @@ let GetWithDeliveryFuncs = (req, res) => {
     res.status(200).json(LocalFromRepo);
 };
 
+let GetSortByDateFuncs = (req, res) => {
+    let LocalFromRepo = GetSortByDateFuncsRepo();
+
+    if (LocalFromRepo.KTF === false) {
+        res.status(500).send(LocalFromRepo.KReason);
+        return;
+    };
+
+    res.status(200).json(LocalFromRepo);
+};
+
 export {
-    GetFuncs, GetSimpleFuncs, GetItemCountFuncs, GetIsSettledFuncs, GetWithSettlementFuncs, GetWithDeliveryFuncs
+    GetFuncs, GetSimpleFuncs, GetItemCountFuncs, GetIsSettledFuncs, GetWithSettlementFuncs, GetWithDeliveryFuncs, GetSortByDateFuncs
 };
