@@ -8,6 +8,7 @@ call npm run NewOrders
 call npm run CustomersToOrders
 call npm run Masters
 call npm run BranchToday
+call npm run AllDays
 call npm run TodayReports
 call npm run Dashboard-QrCodeWise-AsArray
 call npm run Branch-CommonConfig-Menu
