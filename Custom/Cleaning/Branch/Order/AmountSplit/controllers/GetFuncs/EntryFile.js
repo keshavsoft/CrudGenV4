@@ -1,5 +1,6 @@
 import {
     GetFuncs as GetFuncsRepo,
+    GetCashFuncs as GetCashFuncsRepo,
     GetCardFuncs as GetCardFuncsRepo,
     GetUpiFuncs as GetUpiFuncsRepo
 } from '../../repos/GetFuncs/EntryFile.js';
@@ -9,6 +10,20 @@ let GetFuncs = (req, res) => {
     let LocalBranch = LocalParams.inBranch
 
     let LocalFromRepo = GetFuncsRepo({ inBranch: LocalBranch });
+
+    if (LocalFromRepo.KTF === false) {
+        res.status(500).send(LocalFromRepo.KReason);
+        return;
+    };
+
+    res.status(200).json(LocalFromRepo);
+};
+
+let GetCashFuncs = (req, res) => {
+    let LocalParams = req.params;
+    let LocalBranch = LocalParams.inBranch
+
+    let LocalFromRepo = GetCashFuncsRepo({ inBranch: LocalBranch });
 
     if (LocalFromRepo.KTF === false) {
         res.status(500).send(LocalFromRepo.KReason);
@@ -47,5 +62,5 @@ let GetUpiFuncs = (req, res) => {
 };
 
 export {
-    GetFuncs,GetCardFuncs,GetUpiFuncs
+    GetFuncs, GetCardFuncs, GetUpiFuncs, GetCashFuncs
 };

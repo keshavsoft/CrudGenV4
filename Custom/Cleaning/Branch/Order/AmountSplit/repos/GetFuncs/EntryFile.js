@@ -1,5 +1,6 @@
 import {
     GetFuncs as GetFuncsDal,
+    GetCashFuncs as GetCashFuncsDal,
     GetCardFuncs as GetCardFuncsDal,
     GetUpiFuncs as GetUpiFuncsDal
 
@@ -7,6 +8,10 @@ import {
 
 let GetFuncs = ({ inBranch }) => {
     return GetFuncsDal({ inBranch });
+};
+
+let GetCashFuncs = ({ inBranch }) => {
+    return GetCashFuncsDal({ inBranch });
 };
 
 let GetCardFuncs = ({ inBranch }) => {
@@ -18,5 +23,5 @@ let GetUpiFuncs = ({ inBranch }) => {
 };
 
 export {
-    GetFuncs,GetCardFuncs,GetUpiFuncs
+    GetFuncs, GetCashFuncs, GetCardFuncs, GetUpiFuncs
 };
