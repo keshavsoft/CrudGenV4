@@ -20,7 +20,7 @@ let StartFunc = ({ inBranch }) => {
     let jVarLocalTransformedData = jFLocalSettlementFunc({ inData: LocalFilterBranchData });
     let LocalInsertAggValues = jFLocalInsertQrCodeData({ inBranchName: LocalBranchName, inOrderData: jVarLocalTransformedData, inQrCodeData: Qrdb.data });
 
-    let LocalCashAmount = LocalInsertAggValues.filter(element => element.CashAmount !== 0);
+    let LocalCashAmount = LocalInsertAggValues.filter(element => element.UPIAmount !== 0);
 
     let LocalArrayReverseData = LocalCashAmount.slice().reverse();
 
