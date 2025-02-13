@@ -5,6 +5,7 @@ import { StartFunc as StartFuncisSettled } from '../../kLowDb/ReadFromFile/isett
 import { StartFunc as StartFuncwithSettle } from '../../kLowDb/ReadFromFile/withSettle.js';
 import { StartFunc as StartFuncwithDelivery } from '../../kLowDb/ReadFromFile/withDelivery.js';
 import { StartFunc as StartFuncsortByDate } from '../../kLowDb/ReadFromFile/sortByDate.js';
+import { StartFunc as StartFuncsortByDateDesc } from '../../kLowDb/ReadFromFile/sortByDateDesc.js';
 
 let GetAllFuncs = () => {
     return StartFuncmergeArray();
@@ -34,6 +35,10 @@ let GetSortByDateFuncs = () => {
     return StartFuncsortByDate();
 };
 
+let GetSortByDateDescFuncs = () => {
+    return StartFuncsortByDateDesc();
+};
+
 export {
-    GetAllFuncs, GetSimpleFuncs, GetItemCountFuncs, GetIsSettledFuncs, GetWithSettlementFuncs, GetWithDeliveryFuncs, GetSortByDateFuncs
+    GetAllFuncs, GetSimpleFuncs, GetItemCountFuncs, GetIsSettledFuncs, GetWithSettlementFuncs, GetWithDeliveryFuncs, GetSortByDateFuncs,GetSortByDateDescFuncs
 };

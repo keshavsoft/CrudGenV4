@@ -5,7 +5,8 @@ import {
     GetIsSettledFuncs as GetIsSettledFuncsDal,
     GetWithSettlementFuncs as GetWithSettlementFuncsDal,
     GetWithDeliveryFuncs as GetWithDeliveryFuncsDal,
-    GetSortByDateFuncs as GetSortByDateFuncsDal
+    GetSortByDateFuncs as GetSortByDateFuncsDal,
+    GetSortByDateDescFuncs as GetSortByDateDescFuncsDal
 
 } from '../../dals/GetFuncs/EntryFile.js';
 
@@ -37,6 +38,10 @@ let GetSortByDateFuncs = () => {
     return GetSortByDateFuncsDal();
 };
 
+let GetSortByDateDescFuncs = () => {
+    return GetSortByDateDescFuncsDal();
+};
+
 export {
-    GetFuncs, GetSimpleFuncs, GetItemCountFuncs, GetIsSettledFuncs, GetWithSettlementFuncs, GetWithDeliveryFuncs, GetSortByDateFuncs
+    GetFuncs, GetSimpleFuncs, GetItemCountFuncs, GetIsSettledFuncs, GetWithSettlementFuncs, GetWithDeliveryFuncs, GetSortByDateFuncs,GetSortByDateDescFuncs
 };
