@@ -1,7 +1,9 @@
 import {
     GetFuncs as GetFuncsRepo,
     GetAsIsFuncs as GetAsIsFuncsRepo,
-    GetWithRowsFuncs as GetWithRowsFuncsRepo
+    GetWithRowsFuncs as GetWithRowsFuncsRepo,
+    GetOrderDasboardFunc as GetOrderDasboardFuncRepo
+
 } from '../../repos/GetFuncs/EntryFile.js';
 
 let GetFuncs = (req, res) => {
@@ -40,6 +42,18 @@ let GetWithRowsFuncs = (req, res) => {
     res.status(200).json(LocalFromRepo);
 };
 
+let GetOrderDasboardFunc = (req, res) => {
+
+    let LocalFromRepo = GetOrderDasboardFuncRepo();
+
+    if (LocalFromRepo.KTF === false) {
+        res.status(500).send(LocalFromRepo.KReason);
+        return;
+    };
+
+    res.status(200).json(LocalFromRepo);
+};
+
 export {
-    GetFuncs, GetAsIsFuncs, GetWithRowsFuncs
+    GetFuncs, GetAsIsFuncs, GetWithRowsFuncs, GetOrderDasboardFunc
 };
