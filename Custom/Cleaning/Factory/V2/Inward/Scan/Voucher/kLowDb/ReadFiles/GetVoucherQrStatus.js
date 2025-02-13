@@ -26,13 +26,13 @@ const StartFunc = ({ inFactory }) => {
         BranchScan: LocanBranchScanData,
         EntryScan: EntryScanData,
         EntryCancelScan: EntryCancelScanData,
-        inQrCoses: QrCodeData
+        inQrCoses: QrCodeData, inFactory
     });
 
     return TransformedData.reverse();
 };
 
-const MergeFunc = ({ BranchDc, BranchScan, EntryScan, EntryCancelScan, inQrCoses }) =>
+const MergeFunc = ({ BranchDc, BranchScan, EntryScan, EntryCancelScan, inQrCoses, inFactory }) =>
     BranchDc.map(dc => {
         const SentData = BranchScan.filter(qr => qr.VoucherRef == dc.pk);
         const ScannedData = EntryScan.filter(qr => qr.VoucherRef == dc.pk);
@@ -41,7 +41,7 @@ const MergeFunc = ({ BranchDc, BranchScan, EntryScan, EntryCancelScan, inQrCoses
 
         const LocalGenOrderQrsLength = LocalOrderNumbers.map(element =>
             inQrCoses.filter(qr => qr.OrderNumber == element.OrderNumber &&
-                qr.BookingData.OrderData.BranchName == element.BranchName).length
+                qr.BookingData.OrderData.BranchName == element.BranchName && qr.location == inFactory).length
         ).reduce((a, b) => a + b, 0);
 
         const EntryCancelData = EntryCancelScan.filter(qr =>
