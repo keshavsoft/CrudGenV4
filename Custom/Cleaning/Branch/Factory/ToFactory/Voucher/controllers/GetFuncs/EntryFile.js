@@ -4,7 +4,10 @@ import {
     GetToScanOnlyFuncs as GetToScanOnlyFuncsRepo,
     GetSentFuncs as GetSentFuncsRepo,
     GetSentAndFactoryScanFuncs as GetSentAndFactoryScanFuncsRepo,
-    GetRowDataFuncs as GetRowDataFuncsRepo
+    GetRowDataFuncs as GetRowDataFuncsRepo,
+    GetToPrintOnlyFuncs as GetToPrintOnlyFuncsRepo,
+    GetScanOnlyFuncs as GetScanOnlyFuncsRepo,
+    GetDeleteVocherFuncs as GetDeleteVocherFuncsRepo,
 } from '../../repos/GetFuncs/EntryFile.js';
 
 let GetFuncs = (req, res) => {
@@ -59,7 +62,34 @@ let GetRowDataFuncs = (req, res) => {
 
     res.status(200).json(LocalFromRepo);
 };
+
+let GetToPrintOnlyFuncs = (req, res) => {
+    let LocalParams = req.params;
+    let LocalBranch = LocalParams.inBranch
+
+    let LocalFromRepo = GetToPrintOnlyFuncsRepo({ inBranch: LocalBranch });
+
+    res.status(200).json(LocalFromRepo);
+};
+
+let GetScanOnlyFuncs = (req, res) => {
+    let LocalParams = req.params;
+    let LocalBranch = LocalParams.inBranch
+
+    let LocalFromRepo = GetScanOnlyFuncsRepo({ inBranch: LocalBranch });
+
+    res.status(200).json(LocalFromRepo);
+};
+
+let GetDeleteVocherFuncs = (req, res) => {
+    let LocalParams = req.params;
+    let LocalBranch = LocalParams.inBranch
+
+    let LocalFromRepo = GetDeleteVocherFuncsRepo({ inBranch: LocalBranch });
+
+    res.status(200).json(LocalFromRepo);
+};
 export {
     GetFuncs, GetToScanFuncs, GetToScanOnlyFuncs, GetSentFuncs,
-    GetSentAndFactoryScanFuncs, GetRowDataFuncs
+    GetSentAndFactoryScanFuncs, GetRowDataFuncs, GetToPrintOnlyFuncs, GetScanOnlyFuncs, GetDeleteVocherFuncs
 };
