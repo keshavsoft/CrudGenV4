@@ -6,7 +6,6 @@ import {
     GetFuncs, GetItemsFuncs
 } from '../../controllers/GetFuncs/EntryFile.js';
 
-router.get('/:inBranch,/:inFromDate/:inToDate', GetFuncs);
-router.get('/Items/:inBranch', GetItemsFuncs);
+router.get('/:inBranch/:inFromDate/:inToDate', GetFuncs);
 
 export { router };

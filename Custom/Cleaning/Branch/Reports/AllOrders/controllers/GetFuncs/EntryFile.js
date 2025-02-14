@@ -16,7 +16,7 @@ let GetFuncs = (req, res) => {
         return;
     };
 
-    res.status(200).json(LocalFromRepo.JsonData);
+    res.status(200).json(LocalFromRepo);
 };
 
 let GetItemsFuncs = (req, res) => {

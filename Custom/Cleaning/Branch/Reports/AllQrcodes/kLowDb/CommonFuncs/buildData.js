@@ -2,7 +2,7 @@ import { StartFunc as QrCodes } from './QrCodes.js';
 import { StartFunc as BranchScan } from './BranchScan.js';
 import { StartFunc as BranchDc } from './BranchDc.js';
 
-let StartFunc = ({ inBranch }) => {
+let StartFunc = ({ inBranch, inFromDate, inToDate }) => {
     const Qrdb = QrCodes({ inBranch });
     const BranchScandb = BranchScan({ inBranch });
     const BranchDcdb = BranchDc();
@@ -11,9 +11,17 @@ let StartFunc = ({ inBranch }) => {
         inQrData: Qrdb,
         inScandata: BranchScandb, inBranchDC: BranchDcdb
     });
-
-    return jVarLocalTransformedData;
+    
+    return jFLocalBranchWideData({ inData: jVarLocalTransformedData, inFromDate, inToDate });
 };
+
+const jFLocalBranchWideData = ({ inData, inFromDate, inToDate }) =>
+    inData
+        .filter(e => {
+            const itemDate = e.OrderDate.split('/').join('-');
+            return itemDate >= inFromDate && itemDate <= inToDate;
+        })
+        .reverse();
 
 let jFLocalMergeFunc = ({ inQrData, inScandata, inBranchDC }) => {
     let jVarLocalReturnObject = inQrData.map(loopQr => {
@@ -27,7 +35,7 @@ let jFLocalMergeFunc = ({ inQrData, inScandata, inBranchDC }) => {
             Rate: loopQr.Rate,
             FactorySelected: loopQr.FactorySelected,
             OrderNo: loopQr.GenerateReference.ReferncePk,
-            DeliveryDateTime:new Date( loopQr.DeliveryDateTime).toLocaleDateString('en-GB'),
+            DeliveryDateTime: new Date(loopQr.DeliveryDateTime).toLocaleDateString('en-GB'),
             location: loopQr.location,
             OrderDate: new Date(loopQr.BookingData.OrderData.Currentdateandtime).toLocaleDateString('en-GB'),
             BranchScan: matchBranchScan,
