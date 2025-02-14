@@ -1,51 +1,46 @@
-import { StartFunc as BranchDc } from './FromApi/BranchDC.js';
-import { StartFunc as BranchScan } from './FromApi/BranchScan.js';
-import { StartFunc as entryScan } from './FromApi/entryScan.js';
+import { StartFunc as BranchDc } from "./FromApi/BranchDC.js";
+import { StartFunc as BranchScan } from "./FromApi/BranchScan.js";
+import { StartFunc as QrCodes } from "./FromApi/QrCodes.js";
 
-let StartFunc = ({ inBranch }) => {
-    let BranchDcdb = BranchDc();
-    let BranchScandb = BranchScan();
-    let LocalEntryScanData = entryScan();
-    const modifiedBranch = inBranch.replace("BranOrders", "");
-
-    let LocalFilterBranchDc = BranchDcdb.filter(e => e.BranchName === modifiedBranch);
-
-    let jVarLocalTransformedData = jFLocalMergeFunc({
-        inBranchDc: LocalFilterBranchDc,
-        inBranchScan: BranchScandb,
-        inEntryScanData: LocalEntryScanData
-    });
-
-    return jVarLocalTransformedData.slice().reverse();
+let StartFunc = ({ inDC }) => {
+  let LocalDC = parseInt(inDC);
+  let BranchDcdb = BranchDc();
+  let LocalBranchScan = BranchScan();
+  let LocalQrCodes = QrCodes();
+  let LocalFilterBranchDc = BranchDcdb.find((e) => e.pk === LocalDC);
+  
+  if (LocalFilterBranchDc === undefined) {
+    return "No Data";
+  }
+  let LocalFilterBranchScan = LocalBranchScan.filter(
+    (e) => e.VoucherRef == LocalFilterBranchDc.pk
+  );
+  let LocalMergeData = MergeFunc({
+    inScan: LocalFilterBranchScan,
+    inQr: LocalQrCodes,
+  });
+  return {
+    ...LocalFilterBranchDc,
+    Date: new Date(LocalFilterBranchDc.DateTime).toLocaleDateString("en-GB"),
+    OrderData: LocalMergeData,
+  };
 };
 
-let jFLocalMergeFunc = ({ inBranchDc, inBranchScan, inEntryScanData }) => {
-    return inBranchDc.map(loopDc => {
-        let LocalFilterData = inBranchScan.filter(loopQr => loopQr.VoucherRef == loopDc.pk);
-        let LocalScanFilter = inEntryScanData.filter(loopQr => loopQr.VoucherRef == loopDc.pk);
-        loopDc.Date = new Date(loopDc?.Date).toLocaleDateString('en-GB');
-        loopDc.BrancScan = LocalFilterData;
-        loopDc.ItemDetails = LocalFilterData.length;
-        loopDc.EntryScan = LocalScanFilter;
-        loopDc.EntryScanCount = LocalScanFilter.length;
-        loopDc.pending=LocalFilterData.length-LocalScanFilter.length
-        loopDc.EntryDc = LocalScanFilter.length > 0;
-        loopDc.TimeSpan = TimeSpan(loopDc?.DateTime);
-        return loopDc;
-    });
-};
-
-function TimeSpan(DateTime) {
-    let diffMs = new Date() - new Date(DateTime);
-    let diffMonths = Math.floor(diffMs / 2629800000);
-    let diffDays = Math.floor((diffMs % 2629800000) / 86400000);
-    let diffHrs = Math.floor((diffMs % 86400000) / 3600000);
-    let diffMins = Math.round((diffMs % 3600000) / 60000);
-
-    return diffMonths > 0 ? `${diffMonths} months, ${diffDays} days, ${diffHrs} hours, ${diffMins} min` :
-        diffDays > 0 ? `${diffDays} days, ${diffHrs} hours, ${diffMins} min` :
-            diffHrs > 0 ? `${diffHrs} hours, ${diffMins} min` :
-                `${diffMins} min`;
+let MergeFunc = ({ inScan, inQr }) => {
+  let data = inScan.map((element) => {
+    let LocalFind = inQr.find((ele) => ele.pk == element.QrCodeId);
+    return {
+      ...element,
+      OrderNumber : LocalFind?.OrderNumber,
+      OrderData : new Date(LocalFind?.BookingData.OrderData.Currentdateandtime).toLocaleDateString("en-GB") ,
+      DeliveryDate : new Date( LocalFind?.DeliveryDateTime).toLocaleDateString("en-GB")
+    };
+  });
+  return data.reduce((acc, obj) => {
+    acc[obj.OrderNumber] = acc[obj.OrderNumber] || { OrderNumber: obj.OrderNumber, QrCount: 0, OrderDate: obj.OrderData, DeliveryDate: obj.DeliveryDate };
+    acc[obj.OrderNumber].QrCount += 1;
+    return acc;
+  }, {});
 };
 
 export { StartFunc };
