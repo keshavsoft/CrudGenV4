@@ -8,6 +8,7 @@ import {
     GetToPrintOnlyFuncs as GetToPrintOnlyFuncsRepo,
     GetScanOnlyFuncs as GetScanOnlyFuncsRepo,
     GetDeleteVocherFuncs as GetDeleteVocherFuncsRepo,
+	GetQrDataWithPrintFunc as GetQrDataWithPrintFuncRepo
 } from '../../repos/GetFuncs/EntryFile.js';
 
 let GetFuncs = (req, res) => {
@@ -89,7 +90,20 @@ let GetDeleteVocherFuncs = (req, res) => {
 
     res.status(200).json(LocalFromRepo);
 };
+let GetQrDataWithPrintFunc = async (req, res) => {
+    let LocalParams = req.params;
+    let LocalDC = LocalParams.inDC
+	let LocalFromRepo = await GetQrDataWithPrintFuncRepo({ inDC: LocalDC });
+
+	if (LocalFromRepo === false) {
+		res.status(500).send(LocalFromRepo);
+		return;
+	};
+
+	res.status(200).send(JSON.stringify(LocalFromRepo));
+};
 export {
     GetFuncs, GetToScanFuncs, GetToScanOnlyFuncs, GetSentFuncs,
-    GetSentAndFactoryScanFuncs, GetRowDataFuncs, GetToPrintOnlyFuncs, GetScanOnlyFuncs, GetDeleteVocherFuncs
+    GetSentAndFactoryScanFuncs, GetRowDataFuncs, GetToPrintOnlyFuncs, GetScanOnlyFuncs, GetDeleteVocherFuncs,
+	GetQrDataWithPrintFunc
 };

@@ -8,7 +8,7 @@ import {
     GetToPrintOnlyFuncs as GetToPrintOnlyFuncsDal,
     GetScanOnlyFuncs as GetScanOnlyFuncsDal,
     GetDeleteVocherFuncs as GetDeleteVocherFuncsDal,
-
+	GetQrDataWithPrintFunc as GetQrDataWithPrintFuncDal
 } from '../../dals/GetFuncs/EntryFile.js';
 
 let GetFuncs = ({ inBranch }) => {
@@ -46,7 +46,14 @@ let GetScanOnlyFuncs = ({ inBranch }) => {
 let GetDeleteVocherFuncs = ({ inBranch }) => {
     return GetDeleteVocherFuncsDal({ inBranch });
 };
+
+let GetQrDataWithPrintFunc = async ({ inDC }) => {
+	let LocalFromDal = await GetQrDataWithPrintFuncDal({ inDC });
+
+	return LocalFromDal;
+};
 export {
     GetFuncs, GetToScanFuncs, GetToScanOnlyFuncs, GetSentFuncs,
-    GetSentAndFactoryScanFuncs, GetRowDataFuncs, GetToPrintOnlyFuncs, GetScanOnlyFuncs, GetDeleteVocherFuncs
+    GetSentAndFactoryScanFuncs, GetRowDataFuncs, GetToPrintOnlyFuncs, GetScanOnlyFuncs, GetDeleteVocherFuncs,
+	GetQrDataWithPrintFunc
 };
