@@ -7,8 +7,8 @@ import {
 } from '../../controllers/GetFuncs/EntryFile.js';
 
 router.get('/All/:inBranch/:inFromDate/:inToDate', GetAllFuncs);
-// router.get('/InBranch/:inBranch,/:inFromDate/:inToDate', GetInBranchFuncs);
-// router.get('/ToFactory/:inBranch,/:inFromDate/:inToDate', GetToFactoryFuncs);
+router.get('/InBranch/:inBranch/:inFromDate/:inToDate', GetInBranchFuncs);
+router.get('/ToFactory/:inBranch/:inFromDate/:inToDate', GetToFactoryFuncs);
 
 
 export { router };

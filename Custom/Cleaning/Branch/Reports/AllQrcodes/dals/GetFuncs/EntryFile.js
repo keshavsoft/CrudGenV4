@@ -3,8 +3,6 @@ import { StartFunc as InBranch } from '../../kLowDb/ReadFromFile/InBranch.js';
 import { StartFunc as toFactory } from '../../kLowDb/ReadFromFile/toFactory.js';
 
 let GetAllFuncs = ({ inBranch ,inFromDate, inToDate}) => {
-    console.log("inBranch ,inFromDate, inToDate",inBranch ,inFromDate, inToDate);
-    
     return ToadyQrAllReports({ inBranch,inFromDate, inToDate });
 };
 
