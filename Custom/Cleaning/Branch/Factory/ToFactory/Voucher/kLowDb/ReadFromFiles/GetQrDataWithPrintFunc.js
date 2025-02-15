@@ -22,7 +22,7 @@ let StartFunc = ({ inDC }) => {
     return {
         ...LocalFilterBranchDc,
         Date: new Date(LocalFilterBranchDc.DateTime).toLocaleDateString("en-GB"),
-        OrderData: LocalMergeData,
+        OrderData: Object.values(LocalMergeData)
     };
 };
 
