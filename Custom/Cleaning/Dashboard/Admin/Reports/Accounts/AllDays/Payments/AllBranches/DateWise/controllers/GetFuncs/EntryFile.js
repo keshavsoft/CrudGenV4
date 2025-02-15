@@ -1,6 +1,9 @@
 import {
     GetFuncs as GetFuncsRepo,
-    GetAsIsFuncs as GetAsIsFuncsRepo
+    GetAsIsFuncs as GetAsIsFuncsRepo,
+	GetCashFunc as GetCashFuncRepo,
+	GetCardFunc as GetCardFuncRepo,
+	GetUpiFunc as GetUpiFuncRepo
 } from '../../repos/GetFuncs/EntryFile.js';
 
 const GetFuncs = (req, res) => {
@@ -24,4 +27,37 @@ const GetAsIsFuncs = (req, res) => {
     return res.status(200).json(LocalFromRepo);
 };
 
-export { GetFuncs, GetAsIsFuncs };
+let GetCashFunc = async (req, res) => {
+    const { inBranch, inFromDate, inToDate } = req.params;
+	let LocalFromRepo = await GetCashFuncRepo({inBranch, inFromDate, inToDate});
+
+	if (LocalFromRepo === false) {
+		res.status(500).send(LocalFromRepo);
+		return;
+	};
+
+	res.status(200).send(JSON.stringify(LocalFromRepo));
+};
+let GetCardFunc = async (req, res) => {
+    const { inBranch, inFromDate, inToDate } = req.params;
+	let LocalFromRepo = await GetCardFuncRepo({inBranch, inFromDate, inToDate});
+
+	if (LocalFromRepo === false) {
+		res.status(500).send(LocalFromRepo);
+		return;
+	};
+
+	res.status(200).send(JSON.stringify(LocalFromRepo));
+};
+let GetUpiFunc = async (req, res) => {
+    const { inBranch, inFromDate, inToDate } = req.params;
+	let LocalFromRepo = await GetUpiFuncRepo({inBranch, inFromDate, inToDate});
+
+	if (LocalFromRepo === false) {
+		res.status(500).send(LocalFromRepo);
+		return;
+	};
+
+	res.status(200).send(JSON.stringify(LocalFromRepo));
+};
+export { GetFuncs, GetAsIsFuncs,GetCashFunc,GetCardFunc,GetUpiFunc};
