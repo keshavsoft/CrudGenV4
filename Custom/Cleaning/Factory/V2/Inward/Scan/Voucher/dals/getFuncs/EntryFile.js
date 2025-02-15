@@ -3,6 +3,7 @@ import { StartFunc as GetSummary } from '../../kLowDb/ReadFiles/GetSummary.js';
 import { StartFunc as GetAsIs } from '../../kLowDb/ReadFiles/GetAsIs.js';
 import { StartFunc as GetVoucher } from '../../kLowDb/ReadFiles/GetVoucher.js';
 import { StartFunc as GetRowData } from '../../kLowDb/ReadFiles/GetRowData.js';
+import { StartFunc as GetOnlyScanDc } from '../../kLowDb/ReadFiles/GetOnlyScanDc.js';
 
 let GetFunc = ({ inFactory }) => {
     return GetVoucher({ inFactory });
@@ -29,6 +30,10 @@ let GetAggregateFunc = ({ inId }) => {
     // return GetAggregate({ inId });
 };
 
+let GetOnlyScanDcFunc = ({ inFactory }) => {
+    return GetOnlyScanDc({ inFactory });
+};
+
 export {
-    GetFunc, GetQrStatusFunc, GetSummaryFunc, GetAsIsFunc, GetRowDataFunc, GetAggregateFunc
+    GetFunc, GetQrStatusFunc, GetSummaryFunc, GetAsIsFunc, GetRowDataFunc, GetAggregateFunc, GetOnlyScanDcFunc
 };
