@@ -2,21 +2,39 @@ import { StartFunc as buildData } from '../../../../CommonFuncs/buildData.js';
 
 let StartFunc = () => {
     const LocalQrCodeData = buildData();
+    let LocalAllOrdersArray = [];
 
-    const extractedData = LocalQrCodeData.flatMap(item =>
-        item.FileData.map(file => ({
-            CustomerName: file.CustomerData.CustomerName,
-            Mobile: file.CustomerData.Mobile,
-            BranchName: file.OrderData.BranchName,
-            OrderDate: new Date(file.OrderData.Currentdateandtime).toLocaleDateString('en-GB'),
-            OrderDateWithTime: new Date(file.OrderData.Currentdateandtime).toLocaleString('en-GB', { hour: '2-digit', minute: '2-digit' }),
-            OrderNumber: file.UuId,
-            TimeSpan: TimeSpan(file.OrderData.Currentdateandtime)
-        }))
-    );
-    extractedData.sort((a,b) => Date.parse(b.OrderDate) - Date.parse(a.OrderDate));
-    return extractedData.slice().reverse();
+    LocalQrCodeData.forEach(item => {
+        item.FileData.forEach(file => {
+            LocalAllOrdersArray.push({
+                CustomerName: file.CustomerData.CustomerName,
+                Mobile: file.CustomerData.Mobile,
+                BranchName: file.OrderData.BranchName,
+                OrderDate: file.OrderData.Currentdateandtime,
+                OrderDateWithTime: new Date(file.OrderData.Currentdateandtime).toLocaleString('en-GB', { hour: '2-digit', minute: '2-digit' }),
+                OrderNumber: file.UuId,
+                TimeSpan: TimeSpan(file.OrderData.Currentdateandtime)
+            });
+        });
+    });
 
+    const LocalSortedData = LocalAllOrdersArray.sort((a, b) => {
+        const nameA = a.OrderDate; // ignore upper and lowercase
+        const nameB = b.OrderDate; // ignore upper and lowercase
+
+        if (nameA < nameB) {
+            return -1;
+        }
+        if (nameA > nameB) {
+            return 1;
+        }
+
+        // names must be equal
+        return 0;
+    });
+    //const LocalSortedData = _.sortBy(extractedData, "OrderDate");
+
+    return LocalSortedData;
 };
 
 const TimeSpan = (dateTime) => {
@@ -32,7 +50,7 @@ const TimeSpan = (dateTime) => {
     if (diffMonths > 0) return `${diffMonths} months, ${diffDays} days, ${diffHrs} hrs, ${diffMins} min`;
     if (diffDays > 0) return `${diffDays} days, ${diffHrs} hrs, ${diffMins} min`;
     if (diffHrs > 0) return `${diffHrs} hrs, ${diffMins} min`;
-    
+
     return `${diffMins} min`;
 };
 

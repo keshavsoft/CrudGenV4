@@ -15,5 +15,4 @@ router.get('/WithDelivery', GetWithDeliveryFuncs);
 router.get('/SortByDate', GetSortByDateFuncs);
 router.get('/SortByDateDesc', GetSortByDateDescFuncs);
 
-
 export { router };
