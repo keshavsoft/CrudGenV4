@@ -1,3 +1,4 @@
+import { StartFunc as StartFuncFromGetOrderDasboard } from '../../kLowDb/ReadFromFile/GetOrderDasboardFunc.js';
 // import { StartFunc as ToadyQrAllReports } from '../../kLowDb/ReadFileList/ToadyQrAllReports.js';
 
 let GetAllFuncs = () => {
@@ -5,6 +6,13 @@ let GetAllFuncs = () => {
     // return ToadyQrAllReports({ inBranch });
 };
 
+
+let GetOrderDasboardFunc = async () => {
+    let LocalFromLowDb = await StartFuncFromGetOrderDasboard();
+
+    return await LocalFromLowDb;
+};
 export {
-    GetAllFuncs
+    GetAllFuncs,
+    GetOrderDasboardFunc
 };
