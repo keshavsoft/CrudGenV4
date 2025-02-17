@@ -1,5 +1,6 @@
 import {
-    GetFuncs as GetFuncsRepo
+    GetFuncs as GetFuncsRepo,
+	GetOrderDasboardFunc as GetOrderDasboardFuncRepo
 } from '../../repos/GetFuncs/EntryFile.js';
 
 let GetFuncs = (req, res) => {
@@ -16,6 +17,17 @@ let GetFuncs = (req, res) => {
 
 
 
+let GetOrderDasboardFunc = async (req, res) => {
+	let LocalFromRepo = await GetOrderDasboardFuncRepo();
+
+	if (LocalFromRepo === false) {
+		res.status(500).send(LocalFromRepo);
+		return;
+	};
+
+	res.status(200).send(JSON.stringify(LocalFromRepo));
+};
 export {
-    GetFuncs
+    GetFuncs,
+	GetOrderDasboardFunc
 };
