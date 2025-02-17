@@ -5,10 +5,8 @@ import {
     GetIsSettledFuncs as GetIsSettledFuncsRepo,
     GetWithSettlementFuncs as GetWithSettlementFuncsRepo,
     GetWithDeliveryFuncs as GetWithDeliveryFuncsRepo,
-    GetSortByDateFuncs as GetSortByDateFuncsRepo,
     GetSortByDateDescFuncs as GetSortByDateDescFuncsRepo,
- 
-
+    GetSortByDateLatestFunc as GetSortByDateLatestFuncRepo
 } from '../../repos/GetFuncs/EntryFile.js';
 
 let GetFuncs = (req, res) => {
@@ -77,17 +75,6 @@ let GetWithDeliveryFuncs = (req, res) => {
     res.status(200).json(LocalFromRepo);
 };
 
-let GetSortByDateFuncs = (req, res) => {
-    let LocalFromRepo = GetSortByDateFuncsRepo();
-
-    if (LocalFromRepo.KTF === false) {
-        res.status(500).send(LocalFromRepo.KReason);
-        return;
-    };
-
-    res.status(200).json(LocalFromRepo);
-};
-
 let GetSortByDateDescFuncs = (req, res) => {
     let LocalFromRepo = GetSortByDateDescFuncsRepo();
 
@@ -98,6 +85,20 @@ let GetSortByDateDescFuncs = (req, res) => {
 
     res.status(200).json(LocalFromRepo);
 };
+
+let GetSortByDateLatestFunc = async (req, res) => {
+    let LocalFromRepo = await GetSortByDateLatestFuncRepo();
+
+    if (LocalFromRepo === false) {
+        res.status(500).send(LocalFromRepo);
+        return;
+    };
+
+    res.status(200).send(JSON.stringify(LocalFromRepo));
+};
+
 export {
-    GetFuncs, GetSimpleFuncs, GetItemCountFuncs, GetIsSettledFuncs, GetWithSettlementFuncs, GetWithDeliveryFuncs, GetSortByDateFuncs,GetSortByDateDescFuncs
+    GetFuncs, GetSimpleFuncs, GetItemCountFuncs, GetIsSettledFuncs, GetWithSettlementFuncs, GetWithDeliveryFuncs,
+    GetSortByDateDescFuncs,
+    GetSortByDateLatestFunc
 };
