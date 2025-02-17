@@ -1,5 +1,6 @@
 @echo off
 cd ..\LaundryFrontEndForFactory
+git pull
 
 call npm run FromBranchVoucher
 call npm run FromBranchQrCodes
