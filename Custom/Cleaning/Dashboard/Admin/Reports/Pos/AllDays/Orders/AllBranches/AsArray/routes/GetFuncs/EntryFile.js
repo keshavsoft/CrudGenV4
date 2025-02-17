@@ -3,9 +3,9 @@ import express from 'express';
 var router = express.Router();
 
 import {
-    GetFuncs, GetSimpleFuncs, GetItemCountFuncs, GetIsSettledFuncs, GetWithSettlementFuncs, GetWithDeliveryFuncs,
-    GetSortByDateDescFuncs,
-    GetSortByDateLatestFunc
+    GetFuncs, GetSimpleFuncs, GetItemCountFuncs, GetIsSettledFuncs,
+    GetWithSettlementFuncs, GetWithDeliveryFuncs,
+    GetSortByDateLatestFunc, GetSortByDateOldestFunc
 } from '../../controllers/GetFuncs/EntryFile.js';
 
 router.get('/', GetFuncs);
@@ -14,7 +14,7 @@ router.get('/ItemCount', GetItemCountFuncs);
 router.get('/IsSettled', GetIsSettledFuncs);
 router.get('/WithSettlement', GetWithSettlementFuncs);
 router.get('/WithDelivery', GetWithDeliveryFuncs);
-router.get('/SortByDateDesc', GetSortByDateDescFuncs);
 router.get('/SortByDateLatest', GetSortByDateLatestFunc);
+router.get('/SortByDateOldest', GetSortByDateOldestFunc);
 
 export { router };
