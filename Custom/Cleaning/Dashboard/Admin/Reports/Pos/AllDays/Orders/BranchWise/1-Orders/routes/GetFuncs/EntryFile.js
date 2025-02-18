@@ -9,5 +9,4 @@ import {
 router.get('/', GetFuncs);
 router.get('/OrderDasboard', GetOrderDasboardFunc);
 
-
 export { router };
