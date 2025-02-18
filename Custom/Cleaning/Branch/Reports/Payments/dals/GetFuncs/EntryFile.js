@@ -1,4 +1,4 @@
-import { StartFunc as ToadyOrdersReports } from '../../kLowDb/ReadFileList/ToadyOrdersReports.js';
+import { StartFunc as ToadyOrdersReports } from '../../kLowDb/ReadFileList/AllPaymentReports.js';
 
 let GetFuncs = ({ inBranch ,inFromDate, inToDate}) => {
     return ToadyOrdersReports({ inBranch,inFromDate, inToDate });
