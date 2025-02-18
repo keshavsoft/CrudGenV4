@@ -1,15 +1,15 @@
-import { StartFunc as buildData } from '../../../../CommonFuncs/buildData.js';
+import { StartFunc as newBbuildData } from '../../../../CommonFuncs/CommonAllOrders.js';
 
 let StartFunc = () => {
-    const LocalQrCodeData = buildData();
-    const jVarLocalTransformedData = jFLocalSettlementFunc(LocalQrCodeData);
+    const LocalNewQrCodeData = newBbuildData();
+    const jVarLocalTransformedData = jFLocalSettlementFunc(LocalNewQrCodeData);
     const LocalInsertAggValues = jFLocalInsertQrCodeData(jVarLocalTransformedData);
     return LocalInsertAggValues;
 };
 
 const jFLocalSettlementFunc = inData => {
     return Object.entries(inData).map(([key, value]) => {
-        if (Object.values(value.CheckOutData)[0]) {
+        if (Object.values(value?.CheckOutData)[0]) {
             value.IsSettled = false;
             value.TotalPcs = Object.values(value.ItemsInOrder).reduce((acc, p) => acc + parseInt(p.Pcs), 0);
             value.DiscountPer = Object.values(value.CheckOutData)[0].DiscountPer;
@@ -40,3 +40,4 @@ const jFLocalInsertQrCodeData = (inOrderData) => {
 };
 
 export { StartFunc };
+// StartFunc();
