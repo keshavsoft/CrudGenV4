@@ -28,3 +28,4 @@ const jFLocalAllBranchData = (inData, inFromDate, inToDate) => {
 };
 
 export { StartFunc };
+// StartFunc({ inBranch:"All", inFromDate:"08-02-2025", inToDate:"18-02-2025" });
