@@ -13,7 +13,8 @@ let StartFunc = ({ inBranch, inFromDate, inToDate }) => {
     let jVarLocalTransformedData = jFLocalSettlementFunc({ inData: Orderdb.data });
     let LocalInsertAggValues = jFLocalInsertQrCodeData({ inBranchName: LocalBranchName, inOrderData: jVarLocalTransformedData, inQrCodeData: Qrdb.data });
 
-    return jFLocalBranchWideData({ inData: LocalInsertAggValues, inFromDate, inToDate });
+    // Wrap the result in an object to avoid "filter is undefined" issue
+    return { LocalPaymentReports: jFLocalBranchWideData({ inData: LocalInsertAggValues, inFromDate, inToDate }) };
 };
 
 const jFLocalBranchWideData = ({ inData, inFromDate, inToDate }) =>
