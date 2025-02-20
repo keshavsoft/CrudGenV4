@@ -2,10 +2,12 @@ import express from 'express';
 
 var router = express.Router();
 
-// import { router as routerFromgetFuncs } from './routes/getFuncs/EntryFile.js';
-import { router as routerFromDeleteFuncs } from './routes/DeleteFuncs/EntryFile.js';
+import { router as routerFromAmountSplit } from './AmountSplit/routes.js';
+import { router as routerFromOrdersWithQrs } from './OrdersWithQrs/routes.js';
+import { router as OnlyOrders } from './OnlyOrders/routes.js';
 
-// router.use('/', routerFromgetFuncs);
-router.use('/', routerFromDeleteFuncs);
+router.use('/AmountSplit', routerFromAmountSplit);
+router.use('/OrdersWithQrs', routerFromOrdersWithQrs);
+router.use('/OnlyOrders', OnlyOrders);
 
 export { router };
