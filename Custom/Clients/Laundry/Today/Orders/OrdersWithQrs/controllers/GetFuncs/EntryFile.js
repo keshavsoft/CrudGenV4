@@ -1,7 +1,8 @@
 import {
     GetFuncs as GetFuncsRepo,
-    GetTodayFuncs as GetTodayFuncsRepo
-    
+    GetTodayFuncs as GetTodayFuncsRepo,
+    GetOrdersDeleteFunc as GetOrdersDeleteFuncRepo
+
 } from '../../repos/GetFuncs/EntryFile.js';
 
 let GetFuncs = (req, res) => {
@@ -32,6 +33,19 @@ let GetTodayFuncs = (req, res) => {
     res.status(200).json(LocalFromRepo);
 };
 
+let GetOrdersDeleteFunc = async (req, res) => {
+    let LocalParams = req.params;
+    let LocalBranch = LocalParams.inBranch
+    let LocalFromRepo = await GetOrdersDeleteFuncRepo({ inBranch: LocalBranch });
+
+    if (LocalFromRepo === false) {
+        res.status(500).send(LocalFromRepo);
+        return;
+    };
+
+    res.status(200).send(JSON.stringify(LocalFromRepo));
+};
+
 export {
-    GetFuncs, GetTodayFuncs
+    GetFuncs, GetTodayFuncs, GetOrdersDeleteFunc
 };
