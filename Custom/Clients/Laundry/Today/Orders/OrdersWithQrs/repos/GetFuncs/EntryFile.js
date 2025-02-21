@@ -1,6 +1,7 @@
 import {
     GetFuncs as GetFuncsDal,
-    GetTodayFuncs as GetTodayFuncsDal
+    GetTodayFuncs as GetTodayFuncsDal,
+    GetOrdersDeleteFunc as GetOrdersDeleteFuncDal
 
 } from '../../dals/GetFuncs/EntryFile.js';
 
@@ -12,6 +13,12 @@ let GetTodayFuncs = ({ inBranch }) => {
     return GetTodayFuncsDal({ inBranch });
 };
 
+let GetOrdersDeleteFunc = async ({ inBranch }) => {
+    let LocalFromDal = await GetOrdersDeleteFuncDal({ inBranch });
+
+    return LocalFromDal;
+};
+
 export {
-    GetFuncs, GetTodayFuncs
+    GetFuncs, GetTodayFuncs, GetOrdersDeleteFunc
 };
