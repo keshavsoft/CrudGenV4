@@ -71,7 +71,9 @@ let jFLocalInsertQrCodeData = ({ inBranchName, inOrderData, inQrCodeData }) => {
                 element.IsQrCodesRaised = true;
             }
         }
-        jVarLocalReturnArray.push(element);
+        if (element.IsSettled) {
+            jVarLocalReturnArray.push(element);
+        }
     });
 
     return jVarLocalReturnArray;
