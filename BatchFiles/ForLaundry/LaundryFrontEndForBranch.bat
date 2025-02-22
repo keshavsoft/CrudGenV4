@@ -27,7 +27,7 @@ call npm run Delivery
 call npm run Orders
 call npm run Payments
 call npm run QrCodes
-
+call npm run DcSend
 
 xcopy .\publicDir ..\CrudGenV4\public\Laundry\Branch /h /i /c /k /e /r /y
 
