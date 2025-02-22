@@ -15,18 +15,14 @@ let StartFunc = ({ inBranch, inFromDate, inToDate }) => {
         inBranchScan: BranchScandb,
         inEntryScanData: LocalEntryScanData
     });
-console.log("jVarLocalTransformedData",jVarLocalTransformedData);
 
     return jFLocalBranchWideData({ inData: jVarLocalTransformedData, inFromDate, inToDate });
-
 };
 
 const jFLocalBranchWideData = ({ inData, inFromDate, inToDate }) =>
-    
     inData
         .filter(e => {
             const itemDate = e.Date.split('/').join('-');
-
             return itemDate >= inFromDate && itemDate <= inToDate;
         })
         .reverse();
