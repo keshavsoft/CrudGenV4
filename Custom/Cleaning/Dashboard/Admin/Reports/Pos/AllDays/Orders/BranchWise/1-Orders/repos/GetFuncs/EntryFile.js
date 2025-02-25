@@ -1,10 +1,12 @@
 import {
-    GetAllFuncs as GetAllFuncsDal,
-	GetOrderDasboardFunc as GetOrderDasboardFuncDal
+	GetAllFuncs as GetAllFuncsDal,
+	GetOrderDasboardFunc as GetOrderDasboardFuncDal,
+	GetTodayFunc as GetTodayFuncDal,
+	GetAllOrdersFunc as GetAllOrdersFuncDal
 } from '../../dals/GetFuncs/EntryFile.js';
 
 let GetFuncs = () => {
-    return GetAllFuncsDal();
+	return GetAllFuncsDal();
 };
 
 
@@ -13,7 +15,19 @@ let GetOrderDasboardFunc = async () => {
 
 	return LocalFromDal;
 };
+let GetTodayFunc = async ({ inBranch }) => {
+	let LocalFromDal = await GetTodayFuncDal({ inBranch });
+
+	return LocalFromDal;
+};
+
+let GetAllOrdersFunc = async ({ inBranch }) => {
+	let LocalFromDal = await GetAllOrdersFuncDal({ inBranch });
+
+	return LocalFromDal;
+};
+
 export {
-    GetFuncs,
-	GetOrderDasboardFunc
+	GetFuncs, GetOrderDasboardFunc, GetTodayFunc,
+	GetAllOrdersFunc
 };
