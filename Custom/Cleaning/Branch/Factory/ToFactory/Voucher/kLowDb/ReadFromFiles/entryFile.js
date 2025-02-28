@@ -1,5 +1,5 @@
-import { StartFunc as BranchDc } from '../CommonFuncs/FromApi/BranchDC.js';
-import { StartFunc as BranchScan } from '../CommonFuncs/FromApi/BranchScan.js';
+import { StartFunc as BranchDc } from '../CommonFuncs/FromApi/BranToFactDC.js';
+import { StartFunc as BranchScan } from '../CommonFuncs/FromApi/BranToFactBScan.js';
 
 let StartFunc = ({ inBranch }) => {
     let LocalBranch = inBranch;

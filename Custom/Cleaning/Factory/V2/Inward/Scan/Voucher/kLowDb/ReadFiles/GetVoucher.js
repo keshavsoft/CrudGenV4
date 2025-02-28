@@ -1,5 +1,5 @@
-import { StartFunc as BranchDc } from '../CommonFuncs/FromApi/BranchDC.js';
-import { StartFunc as EntryScan } from '../CommonFuncs/FromApi/EntryScan.js';
+import { StartFunc as BranchDc } from '../CommonFuncs/FromApi/BranToFactDC.js';
+import { StartFunc as EntryScan } from '../CommonFuncs/FromApi/BranToFactFScan.js';
 
 const StartFunc = ({ inFactory }) => {
     const BranchDcData = BranchDc();

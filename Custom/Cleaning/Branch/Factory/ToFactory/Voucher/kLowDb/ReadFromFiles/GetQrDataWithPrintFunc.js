@@ -1,5 +1,5 @@
-import { StartFunc as BranchDc } from "../CommonFuncs/FromApi/BranchDC.js";
-import { StartFunc as BranchScan } from "../CommonFuncs/FromApi/BranchScan.js";
+import { StartFunc as BranchDc } from "../CommonFuncs/FromApi/BranToFactDC.js";
+import { StartFunc as BranchScan } from "../CommonFuncs/FromApi/BranToFactBScan.js";
 import { StartFunc as QrCodes } from "../CommonFuncs/FromApi/QrCodes.js";
 
 let StartFunc = ({ inDC }) => {

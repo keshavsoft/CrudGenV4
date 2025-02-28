@@ -1,6 +1,6 @@
 import { StartFunc as QrCodes } from '../CommonFuncs/QrCodes.js';
 import { StartFunc as EntryCancelScan } from '../CommonFuncs/EntryCancelScan.js';
-import { StartFunc as EntryScan } from '../CommonFuncs/EntryScan.js';
+import { StartFunc as EntryScan } from '../CommonFuncs/BranToFactFScan.js';
 
 let StartFunc = ({ inFactory, inId }) => {
     // let LocalFindValue = new Date().toLocaleDateString('en-GB').replace(/\//g, '/');

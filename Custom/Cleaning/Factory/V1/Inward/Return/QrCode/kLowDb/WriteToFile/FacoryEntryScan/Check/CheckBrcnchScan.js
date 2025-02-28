@@ -1,4 +1,4 @@
-import { StartFunc as StartFuncCommonFuncs } from '../../../CommonFuncs/EntryScan.js';
+import { StartFunc as StartFuncCommonFuncs } from '../../../CommonFuncs/BranToFactFScan.js';
 
 const StartFunc = ({ inTable, inQrCodeId }) => {
     let LocalFactoryName = inTable;

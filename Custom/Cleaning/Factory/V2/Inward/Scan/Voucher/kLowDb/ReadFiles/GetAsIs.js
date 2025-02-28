@@ -1,4 +1,4 @@
-import { StartFunc as BranchDc } from '../CommonFuncs/FromApi/BranchDC.js';
+import { StartFunc as BranchDc } from '../CommonFuncs/FromApi/BranToFactDC.js';
 
 const StartFunc = ({ inFactory }) => {
     const BranchDcdb = BranchDc();
