@@ -1,4 +1,4 @@
-import { StartFunc as StartFuncCommonFuncs } from '../../CommonFuncs/BranchDc.js';
+import { StartFunc as StartFuncCommonFuncs } from '../../CommonFuncs/BranToFactDC.js';
 
 const StartFunc = ({ inDc }) => {
     let LocalDc = inDc;
