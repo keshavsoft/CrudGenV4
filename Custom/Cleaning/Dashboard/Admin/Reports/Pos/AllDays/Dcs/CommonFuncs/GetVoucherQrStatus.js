@@ -1,30 +1,30 @@
-import { StartFunc as BranchDc } from './FromApi/BranchDC.js';
-import { StartFunc as BranchScan } from './FromApi/BranchScan.js';
-import { StartFunc as EntryScan } from './FromApi/entryScan.js';
+import { StartFunc as BranToFactDC } from './FromApi/BranToFactDC.js';
+import { StartFunc as BranToFactBScan } from './FromApi/BranToFactBScan.js';
+import { StartFunc as BranToFactFScan } from './FromApi/BranToFactFScan.js';
 import { StartFunc as EntryCancelScan } from './FromApi/EntryCancelScan.js';
 
 const StartFunc = () => {
-    const BranchDcdb = BranchDc();
-    const BranchScanData = BranchScan();
-    const EntryScanData = EntryScan();
+    const BranToFactDCdb = BranToFactDC();
+    const BranToFactBScanData = BranToFactBScan();
+    const BranToFactFScanData = BranToFactFScan();
     const EntryCancelScanData = EntryCancelScan();
 
-    // const LocalFilterBranchDc = BranchDcdb.filter(e => e.Factory === inFactory);
+    // const LocalFilterBranToFactDC = BranToFactDCdb.filter(e => e.Factory === inFactory);
 
     const TransformedData = MergeFunc({
-        BranchDc: BranchDcdb,
-        BranchScan: BranchScanData,
-        EntryScan: EntryScanData,
+        BranToFactDC: BranToFactDCdb,
+        BranToFactBScan: BranToFactBScanData,
+        BranToFactFScan: BranToFactFScanData,
         EntryCancelScan: EntryCancelScanData
     });
 
     return TransformedData.slice().reverse();
 };
 
-const MergeFunc = ({ BranchDc, BranchScan, EntryScan, EntryCancelScan }) => {
-    return BranchDc.map(dc => {
-        const Sent = BranchScan.filter(qr => qr.VoucherRef == dc.pk).length;
-        const Scanned = EntryScan.filter(qr => qr.VoucherRef == dc.pk).length;
+const MergeFunc = ({ BranToFactDC, BranToFactBScan, BranToFactFScan, EntryCancelScan }) => {
+    return BranToFactDC.map(dc => {
+        const Sent = BranToFactBScan.filter(qr => qr.VoucherRef == dc.pk).length;
+        const Scanned = BranToFactFScan.filter(qr => qr.VoucherRef == dc.pk).length;
         const ScannedData = EntryScan.filter(qr => qr.VoucherRef == dc.pk);
         // const EntryCancel = EntryCancelScan.filter(qr => EntryScan.some(scan => qr.QrCodeId == scan.QrCodeId && qr.VoucherRef == dc.pk)).length;
         const EntryCancelData = EntryCancelScan.filter(qr => EntryScan.some(scan => qr.QrCodeId == scan.QrCodeId));
