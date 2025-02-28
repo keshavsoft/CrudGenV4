@@ -19,7 +19,7 @@ let StartFunc = ({ inId }) => {
         return { KTF: false, KReason: `Id : ${LocalId} found in FactoryScan data` };
     };
 
-    const db = ReturnDbObject({ inFileName: "BranchDC.json" });
+    const db = ReturnDbObject({ inFileName: "BranToFactDC.json" });
     db.read();
     let LocalarrayOfObjects = db.data;
 
