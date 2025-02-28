@@ -34,15 +34,15 @@ let StartFunc = ({ inQrData, inBranToFactBScanData, inBranToFactFScanData, inPre
             BookingData: loopQr.BookingData,
 
             // Status: match,  
-            BranToFactBScan: loopBranToFactBScanFindData ? true : false,
-            BranToFactBScan_DC: loopBranToFactBScanFindData?.VoucherRef,
-            BranToFactBScan_FactoryName: loopBranToFactBScanFindData?.DCFactory,
+            BranchScan: loopBranToFactBScanFindData ? true : false,
+            BranchScan_DC: loopBranToFactBScanFindData?.VoucherRef,
+            BranchScan_FactoryName: loopBranToFactBScanFindData?.DCFactory,
 
             // FactoryScan: LoopInsideFindEntryScan,
-            BranToFactFScan: LoopInsideFindBranToFactFScan ? true : false,
-            BranToFactFScan_DC: LoopInsideFindBranToFactFScan?.VoucherRef,
-            BranToFactFScan_DCDate: LoopInsideFindBranToFactFScan?.DCDate,
-            BranToFactFScan_FactoryName: LoopInsideFindBranToFactFScan?.FactoryName,
+            EntryScan: LoopInsideFindBranToFactFScan ? true : false,
+            EntryScan_DC: LoopInsideFindBranToFactFScan?.VoucherRef,
+            EntryScan_DCDate: LoopInsideFindBranToFactFScan?.DCDate,
+            EntryScan_FactoryName: LoopInsideFindBranToFactFScan?.FactoryName,
 
             // EntryRetrun
             EntryReturnScan: LoopInsideFindEntryCancelScan ? true : false,
