@@ -1,5 +1,5 @@
 import { StartFunc as QrCodes } from '../CommonFuncs/QrCodes.js';
-import { StartFunc as WashingScan } from '../CommonFuncs/EntryScan.js';
+import { StartFunc as WashingScan } from '../CommonFuncs/BranToFactFScan.js';
 
 let StartFunc = ({ inId }) => {
     let LocalId = inId;

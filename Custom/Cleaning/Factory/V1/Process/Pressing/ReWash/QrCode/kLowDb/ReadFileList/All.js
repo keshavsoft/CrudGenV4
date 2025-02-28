@@ -1,7 +1,7 @@
 import { StartFunc as QrCodes } from '../CommonFuncs/QrCodes.js';
 import { StartFunc as ReWashScan } from '../CommonFuncs/Press_ReWashScan.js';
 import { StartFunc as ReWashDC } from '../CommonFuncs/Press_ReWashDC.js';
-import { StartFunc as EntryScan } from '../CommonFuncs/EntryScan.js';
+import { StartFunc as EntryScan } from '../CommonFuncs/BranToFactFScan.js';
 
 let StartFunc = ({ inFactory }) => {
     let LocalFactory = inFactory;

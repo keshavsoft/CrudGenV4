@@ -3,8 +3,8 @@ import { StartFunc as F_F_Completion_Scan } from '../CommonFuncs/F_F_Completion_
 import { StartFunc as F_F_Pressing_Return_Scan } from '../CommonFuncs/F_F_Pressing_Return_Scan.js';
 import { StartFunc as F_F_Entry_Return_Scan } from '../CommonFuncs/F_F_Entry_Return_Scan.js';
 import { StartFunc as To_Delivery_Scan } from '../CommonFuncs/To_Delivery_Scan.js';
-import { StartFunc as BranchScan } from '../CommonFuncs/BranchScan.js';
-import { StartFunc as EntryScan } from '../CommonFuncs/EntryScan.js';
+import { StartFunc as BranchScan } from '../CommonFuncs/BranToFactBScan.js';
+import { StartFunc as EntryScan } from '../CommonFuncs/BranToFactFScan.js';
 import { StartFunc as WashingScan } from '../CommonFuncs/WashingScan.js';
 import { StartFunc as PressingScan } from "../CommonFuncs/PressingScan.js";
 import { StartFunc as CompletionScan } from "../CommonFuncs/CompletionScan.js";

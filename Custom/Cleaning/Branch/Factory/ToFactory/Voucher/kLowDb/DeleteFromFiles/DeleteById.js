@@ -1,6 +1,6 @@
 import { StartFunc as ReturnDbObject } from '../CommonFuncs/FromApiWrite/ReturnDbObject.js';
-import { StartFunc as BranchScan } from '../CommonFuncs/FromApi/BranchScan.js';
-import { StartFunc as EntryScan } from '../CommonFuncs/FromApi/entryScan.js';
+import { StartFunc as BranchScan } from '../CommonFuncs/FromApi/BranToFactBScan.js';
+import { StartFunc as EntryScan } from '../CommonFuncs/FromApi/BranToFactFScan.js';
 
 let StartFunc = ({ inId }) => {
     let LocalId = parseInt(inId);

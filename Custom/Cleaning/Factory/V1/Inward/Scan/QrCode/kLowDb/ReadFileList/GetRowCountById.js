@@ -1,4 +1,4 @@
-import { StartFunc as BranchScan } from '../CommonFuncs/EntryScan.js';
+import { StartFunc as BranchScan } from '../CommonFuncs/BranToFactFScan.js';
 
 let StartFunc = ({ inFactory, inId }) => {
     // let LocalFindValue = new Date().toLocaleDateString('en-GB').replace(/\//g, '/');

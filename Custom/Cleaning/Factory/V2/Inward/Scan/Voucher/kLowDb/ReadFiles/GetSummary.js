@@ -1,6 +1,6 @@
-import { StartFunc as BranchDc } from '../CommonFuncs/FromApi/BranchDC.js';
-import { StartFunc as BranchScan } from '../CommonFuncs/FromApi/BranchScan.js';
-import { StartFunc as EntryScan } from '../CommonFuncs/FromApi/EntryScan.js';
+import { StartFunc as BranchDc } from '../CommonFuncs/FromApi/BranToFactDC.js';
+import { StartFunc as BranchScan } from '../CommonFuncs/FromApi/BranToFactBScan.js';
+import { StartFunc as EntryScan } from '../CommonFuncs/FromApi/BranToFactFScan.js';
 import { StartFunc as EntryCancelScan } from '../CommonFuncs/FromApi/EntryCancelScan.js';
 
 const StartFunc = ({ inFactory }) => {

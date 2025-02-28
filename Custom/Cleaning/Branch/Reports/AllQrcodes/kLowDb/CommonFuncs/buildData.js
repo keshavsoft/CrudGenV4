@@ -1,6 +1,6 @@
 import { StartFunc as QrCodes } from './QrCodes.js';
-import { StartFunc as BranchScan } from './BranchScan.js';
-import { StartFunc as BranchDc } from './BranchDc.js';
+import { StartFunc as BranchScan } from './BranToFactBScan.js';
+import { StartFunc as BranchDc } from './BranToFactDC.js';
 
 let StartFunc = ({ inBranch, inFromDate, inToDate }) => {
     const Qrdb = QrCodes({ inBranch });

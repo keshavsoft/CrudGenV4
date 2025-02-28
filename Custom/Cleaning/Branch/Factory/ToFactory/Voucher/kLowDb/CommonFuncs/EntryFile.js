@@ -1,6 +1,6 @@
-import { StartFunc as BranchDc } from './FromApi/BranchDC.js';
-import { StartFunc as BranchScan } from './FromApi/BranchScan.js';
-import { StartFunc as entryScan } from './FromApi/entryScan.js';
+import { StartFunc as BranchDc } from './FromApi/BranToFactDC.js';
+import { StartFunc as BranchScan } from './FromApi/BranToFactBScan.js';
+import { StartFunc as entryScan } from './FromApi/BranToFactFScan.js';
 
 let StartFunc = ({ inBranch }) => {
     let BranchDcdb = BranchDc();
