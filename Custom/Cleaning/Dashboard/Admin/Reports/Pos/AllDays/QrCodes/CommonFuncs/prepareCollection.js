@@ -1,7 +1,7 @@
-let StartFunc = ({ inQrData, inBranToFactBScanData, inBranToFactFScanData, inPress_ReWashScanData, inWashingScanData, inPressingScanData, inCompletionScanData, inPressingRejectScanData, inEntryCancelScanData, inFactoryToBranch_Scan, inF_F_Entry_Return_ScanData, inF_F_Pressing_Return_ScanData, inF_F_Completion_ScanData, inTo_Delivery_ScanData }) => {
+let StartFunc = ({ inQrData, inBranchScandata, inEntryScanData, inPress_ReWashScanData, inWashingScanData, inPressingScanData, inCompletionScanData, inPressingRejectScanData, inEntryCancelScanData, inFactoryToBranch_Scan, inF_F_Entry_Return_ScanData, inF_F_Pressing_Return_ScanData, inF_F_Completion_ScanData, inTo_Delivery_ScanData }) => {
     let jVarLocalReturnObject = inQrData.map(loopQr => {
-        const loopBranToFactBScanFindData = inBranToFactBScanData.find(loopScan => loopScan.QrCodeId == loopQr.pk);
-        const LoopInsideFindBranToFactFScan = inBranToFactFScanData.find(loopScan => loopScan.QrCodeId == loopQr.pk);
+        const loopBranchScanFindData = inBranchScandata.find(loopScan => loopScan.QrCodeId == loopQr.pk);
+        const LoopInsideFindEntryScan = inEntryScanData.find(loopScan => loopScan.QrCodeId == loopQr.pk);
         const LoopInsideFindWashingScan = inWashingScanData.find(loopScan => loopScan.QrCodeId == loopQr.pk);
         const LoopInsideFindPressingScan = inPressingScanData.find(loopScan => loopScan.QrCodeId == loopQr.pk);
         const LoopInsideFindPressingRejectScan = inPressingRejectScanData.find(loopScan => loopScan.QrCodeId == loopQr.pk);
@@ -33,16 +33,16 @@ let StartFunc = ({ inQrData, inBranToFactBScanData, inBranToFactFScanData, inPre
             //BookingData complete object
             BookingData: loopQr.BookingData,
 
-            // Status: match,  
-            BranchScan: loopBranToFactBScanFindData ? true : false,
-            BranchScan_DC: loopBranToFactBScanFindData?.VoucherRef,
-            BranchScan_FactoryName: loopBranToFactBScanFindData?.DCFactory,
+            // Status: match, 
+            BranchScan: loopBranchScanFindData ? true : false,
+            BranchScan_DC: loopBranchScanFindData?.VoucherRef,
+            BranchScan_FactoryName: loopBranchScanFindData?.DCFactory,
 
             // FactoryScan: LoopInsideFindEntryScan,
-            EntryScan: LoopInsideFindBranToFactFScan ? true : false,
-            EntryScan_DC: LoopInsideFindBranToFactFScan?.VoucherRef,
-            EntryScan_DCDate: LoopInsideFindBranToFactFScan?.DCDate,
-            EntryScan_FactoryName: LoopInsideFindBranToFactFScan?.FactoryName,
+            EntryScan: LoopInsideFindEntryScan ? true : false,
+            EntryScan_DC: LoopInsideFindEntryScan?.VoucherRef,
+            EntryScan_DCDate: LoopInsideFindEntryScan?.DCDate,
+            EntryScan_FactoryName: LoopInsideFindEntryScan?.FactoryName,
 
             // EntryRetrun
             EntryReturnScan: LoopInsideFindEntryCancelScan ? true : false,
