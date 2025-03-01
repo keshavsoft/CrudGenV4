@@ -27,9 +27,9 @@ const MergeFunc = ({ BranToFactDC, BranToFactBScan, BranToFactFScan, EntryCancel
         const Scanned = BranToFactFScan.filter(qr => qr.VoucherRef == dc.pk).length;
         const ScannedData = BranToFactFScan.filter(qr => qr.VoucherRef == dc.pk);
         // const EntryCancel = EntryCancelScan.filter(qr => EntryScan.some(scan => qr.QrCodeId == scan.QrCodeId && qr.VoucherRef == dc.pk)).length;
-        const EntryCancelData = EntryCancelScan.filter(qr => EntryScan.some(scan => qr.QrCodeId == scan.QrCodeId));
+        const EntryCancelData = EntryCancelScan.filter(qr => BranToFactFScan.some(scan => qr.QrCodeId == scan.QrCodeId));
         let JVarLocalData = JFDCMergeFunc({ inEntryScan: ScannedData, inEntryCancel: EntryCancelData });
-        const EntryCancel = JVarLocalData.filter(qr => EntryScan.some(scan => qr.QrCodeId == scan.QrCodeId && scan.VoucherRef == qr.DCVoucherRef)).length;
+        const EntryCancel = JVarLocalData.filter(qr => BranToFactFScan.some(scan => qr.QrCodeId == scan.QrCodeId && scan.VoucherRef == qr.DCVoucherRef)).length;
 
         return {
             ...dc,
