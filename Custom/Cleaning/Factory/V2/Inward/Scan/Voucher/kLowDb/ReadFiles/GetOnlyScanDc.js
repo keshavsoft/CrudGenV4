@@ -1,7 +1,8 @@
 import { StartFunc as GetDc } from '../CommonFuncs/GetDc.js';
 
 const StartFunc = ({ inFactory }) => {
-    let BranchDcdb = GetDc({ inFactory });BranchDcdb = BranchDcdb.filter(ele => ele.SendDc && ele.Pending !== 0)
+    let BranchDcdb = GetDc({ inFactory });
+    BranchDcdb = BranchDcdb.filter(ele => ele.SendDc && ele.Pending !== 0)
     let jVarLocalTransformedData = jFLocalMergeFunc({
         inBranchDc: BranchDcdb,
         // inEntryScan: LocalFilterEntryScan
