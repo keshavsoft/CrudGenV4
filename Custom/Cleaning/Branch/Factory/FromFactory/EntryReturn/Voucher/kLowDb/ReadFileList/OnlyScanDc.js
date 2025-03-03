@@ -1,5 +1,5 @@
-import { StartFunc as EntryCancelDc } from '../CommonFuncs/FromApi/pressingCancelDc.js';
-import { StartFunc as EntryCancelScan } from '../CommonFuncs/FromApi/PressingCancelScan.js';
+import { StartFunc as EntryCancelDc } from '../CommonFuncs/FromApi/EntryCancelDc.js';
+import { StartFunc as EntryCancelScan } from '../CommonFuncs/FromApi/EntryCancelScan.js';
 import { StartFunc as FromFactoryCancelScan } from '../CommonFuncs/FromApi/FromFactoryCancelScan.js';
 
 const StartFunc = ({ inBranch }) => {
@@ -17,8 +17,7 @@ const StartFunc = ({ inBranch }) => {
         EntryCancelScan: EntryCancelScanData,
         FromFactoryCancelScan: FromFactoryCancelScanData
     });
-
-    let BranchDcdb = TransformedData.filter(ele => ele.Pending !== 0)
+    let BranchDcdb = TransformedData.filter(ele => ele.Pending === 0)
 
     return BranchDcdb.slice().reverse();
 };

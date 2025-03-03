@@ -1,7 +1,8 @@
 import {
     GetFunc as GetFuncRepo,
     GetQrStatusFunc as GetQrStatusFuncRepo,
-    GetRowDataFunc as GetRowDataFuncRepo
+    GetRowDataFunc as GetRowDataFuncRepo,
+    GetOnlyScanDcFunc as GetOnlyScanDcFuncRepo
 } from '../../repos/getFuncs/EntryFile.js';
 
 let GetFunc = async (req, res) => {
@@ -28,6 +29,20 @@ let GetRowDataFunc = async (req, res) => {
     res.status(200).json(LocalFromRepo);
 };
 
+let GetOnlyScanDcFunc = async (req, res) => {
+    let LocalParams = req.params;
+    let LocalBranch = LocalParams.inBranch;
+    let LocalFromRepo = await GetOnlyScanDcFuncRepo({ inBranch: LocalBranch });
+
+    if (LocalFromRepo === false) {
+        res.status(500).send(LocalFromRepo);
+        return;
+    };
+
+    res.status(200).send(JSON.stringify(LocalFromRepo));
+};
+
 export {
-    GetFunc, GetQrStatusFunc, GetRowDataFunc
+    GetFunc, GetQrStatusFunc, GetRowDataFunc,
+    GetOnlyScanDcFunc
 };

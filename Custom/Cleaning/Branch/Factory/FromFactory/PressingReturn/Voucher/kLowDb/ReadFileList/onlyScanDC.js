@@ -18,7 +18,7 @@ const StartFunc = ({ inBranch }) => {
         FromFactoryCancelScan: FromFactoryCancelScanData
     });
 
-    let BranchDcdb = TransformedData.filter(ele => ele.Pending !== 0)
+    let BranchDcdb = TransformedData.filter(ele => ele.Pending === 0)
 
     return BranchDcdb.slice().reverse();
 };

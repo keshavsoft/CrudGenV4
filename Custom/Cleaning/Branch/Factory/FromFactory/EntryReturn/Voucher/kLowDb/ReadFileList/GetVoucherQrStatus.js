@@ -17,8 +17,9 @@ const StartFunc = ({ inBranch }) => {
         EntryCancelScan: EntryCancelScanData,
         FromFactoryCancelScan: FromFactoryCancelScanData
     });
+    let BranchDcdb = TransformedData.filter(ele => ele.Pending !== 0)
 
-    return TransformedData.slice().reverse();
+    return BranchDcdb.slice().reverse();
 };
 
 const MergeFunc = ({ BranchDc, EntryCancelScan, FromFactoryCancelScan }) => {
