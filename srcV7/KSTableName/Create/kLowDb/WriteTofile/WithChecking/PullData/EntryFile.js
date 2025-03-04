@@ -12,7 +12,8 @@ let StartFunc = () => {
     db.read();
 
     if ("error" in db.data) {
-        return db.data;
+        LocalReturnData.KReason = db.data;
+        return LocalReturnData;
     };
 
     if (Array.isArray(db.data) === false) {
