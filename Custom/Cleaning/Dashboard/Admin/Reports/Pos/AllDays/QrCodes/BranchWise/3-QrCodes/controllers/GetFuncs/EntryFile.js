@@ -2,7 +2,9 @@ import {
     GetFuncs as GetFuncsRepo,
     GetAsIsFuncs as GetAsIsFuncsRepo,
 	GetTodayOrdersFunc as GetTodayOrdersFuncRepo,
-	GetQrCodesDashBoardFunc as GetQrCodesDashBoardFuncRepo
+	GetQrCodesDashBoardFunc as GetQrCodesDashBoardFuncRepo,
+	GetTodayDashBoardQrCodesFunc as GetTodayDashBoardQrCodesFuncRepo,
+	GetAllDashBoardQrCodesFunc as GetAllDashBoardQrCodesFuncRepo
 } from '../../repos/GetFuncs/EntryFile.js';
 
 let GetFuncs = (req, res) => {
@@ -53,8 +55,34 @@ let GetQrCodesDashBoardFunc = async (req, res) => {
 	res.status(200).send(JSON.stringify(LocalFromRepo));
 };
 
+let GetTodayDashBoardQrCodesFunc = async (req, res) => {
+	let LocalBranchName = req.params.inBranch;
+	let LocalFromRepo = await GetTodayDashBoardQrCodesFuncRepo({ inBranch: LocalBranchName });
+
+	if (LocalFromRepo === false) {
+		res.status(500).send(LocalFromRepo);
+		return;
+	};
+
+	res.status(200).send(JSON.stringify(LocalFromRepo));
+};
+
+let GetAllDashBoardQrCodesFunc = async (req, res) => {
+	let LocalBranchName = req.params.inBranch;
+	let LocalFromRepo = await GetAllDashBoardQrCodesFuncRepo({ inBranch: LocalBranchName });
+
+	if (LocalFromRepo === false) {
+		res.status(500).send(LocalFromRepo);
+		return;
+	};
+
+	res.status(200).send(JSON.stringify(LocalFromRepo));
+};
+
 export {
     GetFuncs, GetAsIsFuncs,
 	GetTodayOrdersFunc,
-	GetQrCodesDashBoardFunc
+	GetQrCodesDashBoardFunc,
+	GetTodayDashBoardQrCodesFunc,
+	GetAllDashBoardQrCodesFunc
 };
