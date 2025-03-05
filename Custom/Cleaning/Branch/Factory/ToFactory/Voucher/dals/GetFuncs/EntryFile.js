@@ -8,6 +8,7 @@ import { StartFunc as ToPrintOnly } from '../../kLowDb/ReadFromFiles/ToPrintOnly
 import { StartFunc as ScanOnly } from '../../kLowDb/ReadFromFiles/ScanOnly.js';
 import { StartFunc as DeleteVocher } from '../../kLowDb/ReadFromFiles/DeleteVocher.js';
 import { StartFunc as StartFuncFromGetQrDataWithPrint } from '../../kLowDb/ReadFromFiles/GetQrDataWithPrintFunc.js';
+import { StartFunc as StartFuncFromGetShowAll } from '../../kLowDb/ReadFromFile/ShowAll.js';
 
 
 let GetFuncs = ({ inBranch }) => {
@@ -52,8 +53,15 @@ let GetQrDataWithPrintFunc = async ({ inDC }) => {
 
 	return await LocalFromLowDb;
 };
+let GetShowAllFunc = async ({inBranch}) => {
+	let LocalFromLowDb = await StartFuncFromGetShowAll({inBranch});
+
+	return await LocalFromLowDb;
+};
+
 export {
     GetFuncs, GetToScanFuncs, GetToScanOnlyFuncs, GetSentFuncs, GetSentAndFactoryScanFuncs,
      GetRowDataFuncs, GetToPrintOnlyFuncs, GetScanOnlyFuncs, GetDeleteVocherFuncs,
-	GetQrDataWithPrintFunc
+	GetQrDataWithPrintFunc,
+	GetShowAllFunc
 };
