@@ -1,5 +1,6 @@
 import { StartFunc as TodayAllQrCodes } from '../../kLowDb/ReadFromFile/TodayAllQrCodes.js';
 import { StartFunc as StartFuncFromGetTodayOrders } from '../../kLowDb/ReadFromFile/TodayOrders.js';
+import { StartFunc as StartFuncFromGetQrCodesDashBoard } from '../../kLowDb/ReadFromFile/QrCodesDashBoard.js';
 
 let GetAllFuncs = () => {
     return TodayAllQrCodes();
@@ -15,7 +16,14 @@ let GetTodayOrdersFunc = async () => {
 	return await LocalFromLowDb;
 };
 
+let GetQrCodesDashBoardFunc = async () => {
+	let LocalFromLowDb = await StartFuncFromGetQrCodesDashBoard();
+
+	return await LocalFromLowDb;
+};
+
 export {
     GetAllFuncs, GetAsIsFuncs,
-	GetTodayOrdersFunc
+	GetTodayOrdersFunc,
+	GetQrCodesDashBoardFunc
 };

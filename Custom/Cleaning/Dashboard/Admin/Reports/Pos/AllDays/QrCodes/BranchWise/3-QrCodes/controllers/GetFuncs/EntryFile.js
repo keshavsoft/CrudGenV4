@@ -1,7 +1,8 @@
 import {
     GetFuncs as GetFuncsRepo,
     GetAsIsFuncs as GetAsIsFuncsRepo,
-	GetTodayOrdersFunc as GetTodayOrdersFuncRepo
+	GetTodayOrdersFunc as GetTodayOrdersFuncRepo,
+	GetQrCodesDashBoardFunc as GetQrCodesDashBoardFuncRepo
 } from '../../repos/GetFuncs/EntryFile.js';
 
 let GetFuncs = (req, res) => {
@@ -41,7 +42,19 @@ let GetTodayOrdersFunc = async (req, res) => {
 	res.status(200).send(JSON.stringify(LocalFromRepo));
 };
 
+let GetQrCodesDashBoardFunc = async (req, res) => {
+	let LocalFromRepo = await GetQrCodesDashBoardFuncRepo();
+
+	if (LocalFromRepo === false) {
+		res.status(500).send(LocalFromRepo);
+		return;
+	};
+
+	res.status(200).send(JSON.stringify(LocalFromRepo));
+};
+
 export {
     GetFuncs, GetAsIsFuncs,
-	GetTodayOrdersFunc
+	GetTodayOrdersFunc,
+	GetQrCodesDashBoardFunc
 };
