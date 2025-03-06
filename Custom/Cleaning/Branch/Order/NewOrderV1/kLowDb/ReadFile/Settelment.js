@@ -19,6 +19,7 @@ const StartFunc = ({ inBranch, inRow }) => {
     let LocalItemsTotal = Object.values(LocalRowFind?.ItemsInOrder)
         .map(el => el.Total)
         .reduce((a, b) => a + parseInt(b), 0);
+    const LocalcalculateSettlement = calculateGST({ rate: LocalItemsTotal, gstRate: "18" });
 
     return {
         KTF: true,
@@ -29,9 +30,34 @@ const StartFunc = ({ inBranch, inRow }) => {
             Rate: LocalItemsTotal,
             Date: new Date(LocalRowFind?.DateTime).toLocaleDateString('en-GB'),
             OrderNumber: LocalRowFind.pk,
-            CheckOutData: LocalCheckOutData
+            CheckOutData: LocalCheckOutData,
+            CGST: LocalcalculateSettlement?.cgst,
+            SGST: LocalcalculateSettlement?.sgst,
+            TotalAmt: LocalcalculateSettlement?.totalAmt,
+            RoundOffAmt: LocalcalculateSettlement?.RoundOffAmt,
+            RoundedTotal: LocalcalculateSettlement?.roundedTotal
+
         }
-    };
+    }
 };
 
+function calculateGST({ rate, gstRate }) {
+    const halfGstRate = parseInt(gstRate) / 2;
+    const LocalRate = parseInt(rate);
+    const cgst = (LocalRate * halfGstRate / 100).toFixed(2);
+    const sgst = (LocalRate * halfGstRate / 100).toFixed(2);
+    const totalAmt = (LocalRate + parseFloat(cgst) + parseFloat(sgst)).toFixed(2);
+    const roundedTotal = Math.round(totalAmt);
+    const roundOffAmt = (roundedTotal - totalAmt).toFixed(2);
+
+    return {
+        cgst: cgst,
+        sgst: sgst,
+        totalAmt: totalAmt,
+        RoundOffAmt: roundOffAmt,
+        roundedTotal: roundedTotal
+    };
+}
+
 export { StartFunc };
+// export  StartFunc({ inBranch:"BranOrdersKKD", inRow:6 });
